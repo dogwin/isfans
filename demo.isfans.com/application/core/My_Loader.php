@@ -28,7 +28,7 @@ class My_Loader extends CI_Loader
      */
 	public function switch_theme($theme = 'default')
 	{
-		$this->_ci_view_paths = array(APPPATH . 'templates/' . $theme . '/'	=> TRUE);
+		$this->_ci_view_paths = array('templates/' . $theme . '/'	=> TRUE);
 	}
 	
 	// ------------------------------------------------------------------------

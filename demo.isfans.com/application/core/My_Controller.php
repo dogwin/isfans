@@ -29,37 +29,12 @@ abstract class Admin_Controller extends CI_Controller
 		$this->settings->load('backend');
 		$this->load->switch_theme(setting('backend_theme'));
 		$this->load->add_model();
-		$this->_check_login();
-		$this->load->library('acl');
 		$this->load->driver('cache', array('adapter' => 'file', 'backup' => 'file'));
 	}
 		
 	// ------------------------------------------------------------------------
 
-    /**
-     * 检查用户是否登录
-     *
-     * @access  protected
-     * @return  void
-     */
-	protected function _check_login()
-	{
-		if ( ! $this->session->userdata('uid'))
-		{   
-			redirect(setting('backend_access_point') . '/login');
-		}
-		else
-		{
-			$this->_admin = $this->adminuser_mdl->get_full_user_by_username($this->session->userdata('uid'), 'uid');
-			if ($this->_admin->status != 1)
-			{
-				$this->session->set_flashdata('error', "此帐号已被冻结,请联系管理员!");
-				redirect(setting('backend_access_point') . '/login');
-			}
-		}
-	}
-	
-	// ------------------------------------------------------------------------
+    
 
     /**
      * 加载视图
