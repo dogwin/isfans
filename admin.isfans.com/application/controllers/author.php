@@ -1,24 +1,18 @@
 <?php
-/**
- * @author dogwin
- * @website http://isfans.com
- * @date 2014-04-15
- */
-class Author extends CI_Controller{
+class Author extends Admin_Controller{
 	function __construct(){
 		parent::__construct();
-		$this->load->helper(array('file','url','cookie'));
-		$this->load->library(array('session','parser','email','image_lib','phpmail','user_agent','pagination','calendar'));
-		$this->load->model(array(''));
-		$data = '';
-		$this->data['header'] = $this->load->view('global/header-login',$data,true);
-		$this->data['footer'] = $this->load->view('global/footer-login',$data,true);
+		$this->load->model('author_mdl');
 	}
+	
 	function index(){
-		echo base_url();
-		$this->load->view('index',$this->data);
-	}
-	function login(){
-		$this->load->view('author/login',$this->data);
+		$data = array();
+		$info = $this->author_mdl->get_user_info_by_id(2);
+		echo "<pre>";
+		print_r($info);
+		//$this->_template('login',$data);
+		$in = $this->author_mdl->get_cache(2);
+		print_r($in);
+		var_dump($this->cache->cache_info());
 	}
 }

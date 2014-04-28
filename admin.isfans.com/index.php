@@ -1,5 +1,4 @@
 <?php
-
 /*
  *---------------------------------------------------------------
  * APPLICATION ENVIRONMENT
@@ -56,7 +55,7 @@ if (defined('ENVIRONMENT'))
  * as this file.
  *
  */
-	$system_path = '../system';
+	$system_path = 'system';
 
 /*
  *---------------------------------------------------------------
@@ -190,7 +189,19 @@ if (defined('ENVIRONMENT'))
 
 		define('APPPATH', BASEPATH.$application_folder.'/');
 	}
+/**
+ * 数据库设置
+ */
+require_once BASEPATH . '../' . 'shared/config/config.ini.php';
 
+/*
+ * --------------------------------------------------------------------
+ * 加载 环境常量
+ * --------------------------------------------------------------------
+ */
+
+require_once BASEPATH . '../' . 'shared/config/constant.php';
+	
 /*
  * --------------------------------------------------------------------
  * LOAD THE BOOTSTRAP FILE

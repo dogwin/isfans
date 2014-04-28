@@ -33,37 +33,54 @@
 | 				 can make your site vulnerable to SQL injection if you are using a
 | 				 multi-byte character set and are running versions lower than these.
 | 				 Sites using Latin-1 or UTF-8 database character set and collation are unaffected.
-|	['swap_pre'] A default table prefix that should be swapped with the dbprefix
+|	['swap_pre'] A rdb table prefix that should be swapped with the dbprefix
 |	['autoinit'] Whether or not to automatically initialize the database.
 |	['stricton'] TRUE/FALSE - forces 'Strict Mode' connections
 |							- good for ensuring strict SQL while developing
 |
 | The $active_group variable lets you choose which connection group to
-| make active.  By default there is only one group (the 'default' group).
+| make active.  By rdb there is only one group (the 'rdb' group).
 |
 | The $active_record variables lets you determine whether or not to load
 | the active record class
 */
 
-$active_group = 'default';
+$active_group = 'rdb';
 $active_record = TRUE;
 
-$db['default']['hostname'] = 'localhost';
-$db['default']['username'] = '';
-$db['default']['password'] = '';
-$db['default']['database'] = '';
-$db['default']['dbdriver'] = 'mysql';
-$db['default']['dbprefix'] = '';
-$db['default']['pconnect'] = TRUE;
-$db['default']['db_debug'] = TRUE;
-$db['default']['cache_on'] = FALSE;
-$db['default']['cachedir'] = '';
-$db['default']['char_set'] = 'utf8';
-$db['default']['dbcollat'] = 'utf8_general_ci';
-$db['default']['swap_pre'] = '';
-$db['default']['autoinit'] = TRUE;
-$db['default']['stricton'] = FALSE;
+//read
+$db['rdb']['hostname'] = R_DBHOST;
+$db['rdb']['username'] = R_USER;
+$db['rdb']['password'] = R_PASSWORD;
+$db['rdb']['database'] = R_DB;
+$db['rdb']['dbdriver'] = 'mysql';
+$db['rdb']['dbprefix'] = '';
+$db['rdb']['pconnect'] = TRUE;
+$db['rdb']['db_debug'] = TRUE;
+$db['rdb']['cache_on'] = FALSE;
+$db['rdb']['cachedir'] = '';
+$db['rdb']['char_set'] = 'utf8';
+$db['rdb']['dbcollat'] = 'utf8_general_ci';
+$db['rdb']['swap_pre'] = '';
+$db['rdb']['autoinit'] = TRUE;
+$db['rdb']['stricton'] = FALSE;
 
+//write
+$db['wdb']['hostname'] = W_DBHOST;
+$db['wdb']['username'] = W_USER;
+$db['wdb']['password'] = W_PASSWORD;
+$db['wdb']['database'] = R_DB;
+$db['wdb']['dbdriver'] = 'mysql';
+$db['wdb']['dbprefix'] = '';
+$db['wdb']['pconnect'] = TRUE;
+$db['wdb']['db_debug'] = TRUE;
+$db['wdb']['cache_on'] = FALSE;
+$db['wdb']['cachedir'] = '';
+$db['wdb']['char_set'] = 'utf8';
+$db['wdb']['dbcollat'] = 'utf8_general_ci';
+$db['wdb']['swap_pre'] = '';
+$db['wdb']['autoinit'] = TRUE;
+$db['wdb']['stricton'] = FALSE;
 
 /* End of file database.php */
 /* Location: ./application/config/database.php */
