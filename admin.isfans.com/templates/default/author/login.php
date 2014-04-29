@@ -17,30 +17,30 @@ if (!defined('BASEPATH'))
     </head>
     <body>
         <div id="loginbox">            
-            <?php echo form_open('login/do'); ?>
+            	
 				<div class="control-group normal_text"> <h3><img src="<?= base_url() ?>asset/default/media/img/logo.png" alt="Logo" /></h3></div>
+				<div id='errormsg'></div>
                 <div class="control-group">
                     <div class="controls">
                         <div class="main_input_box">
-                            <span class="add-on bg_lg"><i class="icon-user"></i></span><input name="username" type="text" placeholder="用户名" />
+                            <span class="add-on bg_lg"><i class="icon-user"></i></span><input name="username" id="username" type="text" placeholder="用户名" />
                         </div>
                     </div>
                 </div>
                 <div class="control-group">
                     <div class="controls">
                         <div class="main_input_box">
-                            <span class="add-on bg_ly"><i class="icon-lock"></i></span><input name="password" type="password" placeholder="密码" />
+                            <span class="add-on bg_ly"><i class="icon-lock"></i></span><input name="password" id="password" type="password" placeholder="密码" />
                         </div>
                     </div>
                 </div>
                 <div class="form-actions">
-                    <span class="pull-right"><a type="submit" href="javascript:;" class="btn btn-success" />登录</a></span>
+                    <span class="pull-right"><input type="button" class="btn btn-success" id="loginbt" value='登录'/></span>
                 </div>
-            <?php echo form_close(); ?>
         </div>
         
-        <script src="<?= base_url() ?>asset/default/media/js/jquery-1.10.1.min.js"></script>  
-        <script src="<?= base_url() ?>asset/default/media/js/matrix.login.js"></script> 
+        <script src="<?= base_url() ?>asset/default/media/js/jquery-1.10.1.min.js"></script>
+        <script src="<?php echo base_url();?>isfansjs/author" type="text/javascript" language="php"></script> 
     </body>
 
 </html>
