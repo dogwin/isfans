@@ -78,12 +78,15 @@ class Acl
 		$this->ci = & get_instance();
 		$this->ci->settings->load('menus');//加载菜单数据
 		$this->top_menus = & setting('menus');
-		if ($this->ci->_admin->role != 1)
+		/*if ($this->ci->_admin->role != 1)
 		{
 			$this->ci->settings->load('acl/role_' . $this->ci->_admin->role . '.php');//加载权限数据
 			$this->top_menus = & setting('menus');
 			$this->rights = & setting('current_role');
-		}
+		}*/
+		$this->ci->settings->load('acl/role_1.php');//加载权限数据
+		$this->top_menus = & setting('menus');
+		$this->rights = & setting('current_role');
 		$this->_filter_menus();
 	}
 	

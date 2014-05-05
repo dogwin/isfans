@@ -1,7 +1,10 @@
 <?php
-class Author extends Admin_Controller{
+class Author extends CI_Controller{
 	function __construct(){
 		parent::__construct();
+		$this->load->library('session');
+		$this->settings->load('backend');
+		$this->load->switch_theme(setting('backend_theme'));
 		$this->load->model('author_mdl');
 	}
 	function index(){

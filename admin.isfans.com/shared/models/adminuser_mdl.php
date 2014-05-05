@@ -211,7 +211,34 @@ class Adminuser_mdl extends CI_Model
 	}
 
 	// ------------------------------------------------------------------------
-	
+	//get session
+	function dogwin_check_session(){
+		$S_username = $this->session->userdata('username');
+		$S_password = $this->session->userdata('password');
+		//echo "sslslslsls".$S_username;
+		if($S_username==""||$S_password==""){
+			return false;
+		}else{
+			$cachekey = 'dogwin_check_session_'.$S_username;
+			$data	= $this->cache->get($cachekey);
+			if( FALSE!==$data && TRUE!=$force_refresh ) {
+				return $data;
+			}
+			$CI = & get_instance();
+			//已登陆验证
+			$sql = "select * from isfans_administrator where username=? and password=?";
+			$query = $this->db->query($sql,array($S_username,$S_password));
+				
+			if($obj = $query->row()) {
+				$this->cache->save($cachekey,$obj,3000);
+				return $obj;
+			}
+			$this->cache->delete($cachekey);
+			return FALSE;
+		}
+		//echo "S_username==>".$S_username;
+		//echo "<BR>S_password==>".$S_password;
+	}
 }
 
 /* End of file user_mdl.php */
