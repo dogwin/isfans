@@ -27,8 +27,8 @@ abstract class Admin_Controller extends CI_Controller
 		$this->load->library('session');
 		$this->settings->load('backend');
 		$this->load->switch_theme(setting('backend_theme'));
-		//$this->_check_login();
-		//$this->load->library('acl');
+		$this->_check_login();
+		$this->load->library('acl');
 		$this->load->driver('cache', array('adapter' => 'file', 'backup' => 'file'));
 	}
 		
@@ -44,6 +44,7 @@ abstract class Admin_Controller extends CI_Controller
 	{
 		$CI = & get_instance();
 		$CI->load->model(array('auth_mdl'));
+		$CI->load->driver('cache', array('adapter' => 'file', 'backup' => 'file'));
 		$this->_admin = $CI->auth_mdl->dogwin_check_session(TRUE);
 		if(!$this->_admin){
 			//unlogged

@@ -78,13 +78,12 @@ class Acl
 		$this->ci = & get_instance();
 		$this->ci->settings->load('menus');//加载菜单数据
 		$this->top_menus = & setting('menus');
-		/*if ($this->ci->_admin->role != 1)
+		if ($this->ci->_admin->role != 1)
 		{
 			$this->ci->settings->load('acl/role_' . $this->ci->_admin->role . '.php');//加载权限数据
 			$this->top_menus = & setting('menus');
 			$this->rights = & setting('current_role');
-		}*/
-		$this->ci->settings->load('acl/role_1.php');//加载权限数据
+		}
 		$this->top_menus = & setting('menus');
 		$this->rights = & setting('current_role');
 		$this->_filter_menus();
@@ -104,6 +103,7 @@ class Acl
 		//print_r($this->left_menus);exit;
 		foreach ($this->left_menus as $key => $v)
 		{
+			
 			if($v['menu_id']<4) continue;
 			if ($v['sub_menus'])
 			{
@@ -131,7 +131,7 @@ class Acl
 						   	    continue;
 						   } 
 						   echo '<li class="' . (isset($j['current']) ? 'active' : '') .'"><a href="' . 
-						   	 backend_url($j['class_name'] . '/' . $j['method_name'], $extra) . '">' . $j['menu_name'] . '</a></li>';
+						   	 base_url($j['class_name'] . '/' . $j['method_name'], $extra) . '">' . $j['menu_name'] . '</a></li>';
 						 }
 				echo	 '</ul>
 				      </li>';	
@@ -191,7 +191,7 @@ class Acl
      * @param   string
      * @return  void
      */
-	private function _filter_normal_menus($class_name, $method_name, $default_uri = 'system/home', $current_menu = 0, $folder = '')
+	private function _filter_normal_menus($class_name, $method_name, $default_uri = 'systemset/index', $current_menu = 0, $folder = '')
 	{//0
 		$this->_current_menu = $current_menu;
 		$this->_default_link = backend_url($default_uri);
@@ -201,8 +201,8 @@ class Acl
 		{
 			foreach ($v['sub_menus'] as $jkey => & $j)
 			{
-				
-				if ($j['class_name'] == $folder . $class_name AND ($j['method_name'] == $method_name || $method_name=='add' || $method_name=='edit' || $method_name=='show'))
+				//if ($j['class_name'] == $folder . $class_name AND ($j['method_name'] == $method_name || $method_name=='add' || $method_name=='edit' || $method_name=='show'))
+				if ($j['class_name'] == $folder . $class_name AND ($j['method_name'] == $method_name ||$method_name == $j['method_name']."_edit"))
 				{
 					$j['current'] = TRUE;
 					$v['current'] = TRUE;

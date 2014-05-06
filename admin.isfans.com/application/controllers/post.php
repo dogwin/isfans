@@ -15,7 +15,7 @@ class Post extends Admin_Controller{
 		$password = $this->input->post('password',TRUE);
 		
 		if($this->auth_mdl->user_login($username,$password)){
-			$array = array('flag'=>true,'redirect'=>base_url('Systemset/index'));
+			$array = array('flag'=>true,'redirect'=>base_url('systemset/index'));
 		}else{
 			$array = array('flag'=>false);
 		}

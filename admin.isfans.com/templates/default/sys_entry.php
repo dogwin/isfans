@@ -152,11 +152,11 @@ if(isset($data_hcjf['pl'])&&!empty($data_hcjf['pl'])){
 					<div class="sidebar-toggler hidden-phone"></div>
 					<!-- BEGIN SIDEBAR TOGGLER BUTTON -->
 				</li>
-				<li class="start <?php if($this->uri->rsegment(1)=='system'&&$this->uri->rsegment(2)=='home'){echo 'active';}?>">
-					<a href="<?= base_url()?>">
+				<li class="start <?php if($this->uri->rsegment(1)=='systemset'&&$this->uri->rsegment(2)=='index'){echo 'active';}?>">
+					<a href="<?= base_url('systemset/index')?>">
 					<i class="icon-home"></i> 
 					<span class="title">后台首页</span>
-					<?php if($this->uri->rsegment(1)=='system'&&$this->uri->rsegment(2)=='home'){?>
+					<?php if($this->uri->rsegment(1)=='systemset'&&$this->uri->rsegment(2)=='index'){?>
 					<span class="selected"></span>
 					<span class="arrow"></span>
 					<?php }?>

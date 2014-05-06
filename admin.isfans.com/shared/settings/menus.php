@@ -3,8 +3,8 @@ $setting['menus']=array (
   0 => 
   array (
     'menu_id' => '1',
-    'class_name' => 'system',
-    'method_name' => 'home',
+    'class_name' => 'systemset',
+    'method_name' => 'index',
     'menu_name' => '系统',
     'menu_parent' => '0',
     'sub_menus' => 
@@ -12,8 +12,8 @@ $setting['menus']=array (
       0 => 
       array (
         'menu_id' => '2',
-        'class_name' => 'system',
-        'method_name' => 'home',
+        'class_name' => 'systemset',
+        'method_name' => 'index',
         'menu_name' => '后台首页',
         'menu_parent' => '1',
         'sub_menus' => 
@@ -21,8 +21,8 @@ $setting['menus']=array (
           0 => 
           array (
             'menu_id' => '3',
-            'class_name' => 'system',
-            'method_name' => 'home',
+            'class_name' => 'systemset',
+            'method_name' => 'index',
             'menu_name' => '后台首页',
             'menu_parent' => '2',
           ),
@@ -56,7 +56,7 @@ $setting['menus']=array (
           2 => 
           array (
             'menu_id' => '7',
-            'class_name' => 'system',
+            'class_name' => 'systemset',
             'method_name' => 'password',
             'menu_name' => '修改密码',
             'menu_parent' => '4',
@@ -64,7 +64,7 @@ $setting['menus']=array (
           3 => 
           array (
             'menu_id' => '8',
-            'class_name' => 'system',
+            'class_name' => 'systemset',
             'method_name' => 'cache',
             'menu_name' => '更新后台缓存',
             'menu_parent' => '4',
@@ -72,7 +72,7 @@ $setting['menus']=array (
           4 => 
           array (
             'menu_id' => '27',
-            'class_name' => 'system',
+            'class_name' => 'systemset',
             'method_name' => 'clearcache',
             'menu_name' => '清除数据缓存',
             'menu_parent' => '4',
@@ -85,6 +85,14 @@ $setting['menus']=array (
             'menu_name' => '一级页面设置',
             'menu_parent' => '4',
           ),
+        		6 =>
+        		array (
+        				'menu_id' => '29',
+        				'class_name' => 'systemset',
+        				'method_name' => 'menus',
+        				'menu_name' => '菜单管理',
+        				'menu_parent' => '4',
+        		),
         ),
       ),
       2 => 
