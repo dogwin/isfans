@@ -190,7 +190,11 @@ if (defined('ENVIRONMENT'))
 
 		define('APPPATH', BASEPATH.$application_folder.'/');
 	}
-
+	/**
+	 * 数据库设置
+	 */
+	require_once 'shared/config/config.ini.php';
+	
 /*
  * --------------------------------------------------------------------
  * LOAD THE BOOTSTRAP FILE

@@ -23,13 +23,14 @@ abstract class Admin_Controller extends CI_Controller
 	public function __construct()
 	{
 		parent::__construct();
-        $this->load->database();
+		
 		$this->load->library('session');
 		$this->settings->load('backend');
+		$this->load->model(array('auth_mdl'));
 		$this->load->switch_theme(setting('backend_theme'));
+		$this->load->driver('cache', array('adapter' => 'file', 'backup' => 'file'));
 		$this->_check_login();
 		$this->load->library('acl');
-		$this->load->driver('cache', array('adapter' => 'file', 'backup' => 'file'));
 	}
 		
 	// ------------------------------------------------------------------------
@@ -42,13 +43,17 @@ abstract class Admin_Controller extends CI_Controller
 	 */
 	protected function _check_login()
 	{
-		$CI = & get_instance();
-		$CI->load->model(array('auth_mdl'));
-		$CI->load->driver('cache', array('adapter' => 'file', 'backup' => 'file'));
-		$this->_admin = $CI->auth_mdl->dogwin_check_session(TRUE);
+		$CI =& get_instance();
+		echo "ll==>".$CI->session->userdata('username');
+		print_r($CI->session->all_userdata());
+		print_r($CI->auth_mdl->dogwin_check_session());
+		//$this->ci->load->model(array('auth_mdl'));
+		//$this->ci->load->driver('cache', array('adapter' => 'file', 'backup' => 'file'));
+		$this->_admin = $this->auth_mdl->dogwin_check_session();
+		print_r($this->_admin);
 		if(!$this->_admin){
 			//unlogged
-			redirect(base_url('author/login'));
+			//redirect(base_url('author/login'));
 			exit();
 		}
 		/*if ( ! $this->session->userdata('uid'))

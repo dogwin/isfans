@@ -44,7 +44,7 @@
 | The $active_record variables lets you determine whether or not to load
 | the active record class
 */
-
+/*
 $active_group = 'default';
 $active_record = TRUE;
 
@@ -63,7 +63,43 @@ $db['default']['dbcollat'] = 'utf8_general_ci';
 $db['default']['swap_pre'] = '';
 $db['default']['autoinit'] = TRUE;
 $db['default']['stricton'] = FALSE;
+*/
+$active_group = 'rdb';
+$active_record = TRUE;
 
+//read
+$db['rdb']['hostname'] = R_DBHOST;
+$db['rdb']['username'] = R_USER;
+$db['rdb']['password'] = R_PASSWORD;
+$db['rdb']['database'] = R_DB;
+$db['rdb']['dbdriver'] = 'mysql';
+$db['rdb']['dbprefix'] = 'isfans_';
+$db['rdb']['pconnect'] = TRUE;
+$db['rdb']['db_debug'] = TRUE;
+$db['rdb']['cache_on'] = FALSE;
+$db['rdb']['cachedir'] = '';
+$db['rdb']['char_set'] = 'utf8';
+$db['rdb']['dbcollat'] = 'utf8_general_ci';
+$db['rdb']['swap_pre'] = '';
+$db['rdb']['autoinit'] = TRUE;
+$db['rdb']['stricton'] = FALSE;
+
+//write
+$db['wdb']['hostname'] = W_DBHOST;
+$db['wdb']['username'] = W_USER;
+$db['wdb']['password'] = W_PASSWORD;
+$db['wdb']['database'] = R_DB;
+$db['wdb']['dbdriver'] = 'mysql';
+$db['wdb']['dbprefix'] = 'isfans_';
+$db['wdb']['pconnect'] = TRUE;
+$db['wdb']['db_debug'] = TRUE;
+$db['wdb']['cache_on'] = FALSE;
+$db['wdb']['cachedir'] = '';
+$db['wdb']['char_set'] = 'utf8';
+$db['wdb']['dbcollat'] = 'utf8_general_ci';
+$db['wdb']['swap_pre'] = '';
+$db['wdb']['autoinit'] = TRUE;
+$db['wdb']['stricton'] = FALSE;
 
 /* End of file database.php */
 /* Location: ./application/config/database.php */

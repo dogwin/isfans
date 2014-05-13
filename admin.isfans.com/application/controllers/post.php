@@ -5,16 +5,18 @@
  * @website http://isfans.com
  * @date 2014-04-29
  */
-class Post extends Admin_Controller{
+class Post extends CI_Controller{
 	function __construct(){
 		parent::__construct();
-		$this->load->model(array('post_mdl','auth_mdl'));
+		$this->load->library(array('session'));
+		$this->load->model(array('auth_mdl'));
+		$this->load->driver('cache', array('adapter' => 'file', 'backup' => 'file'));
 	}
 	function login(){
-		$username = $this->input->post('username',TRUE);
-		$password = $this->input->post('password',TRUE);
+		$username = $this->input->post('username');
+		$password = $this->input->post('password');
 		
-		if($this->auth_mdl->user_login($username,$password)){
+		if($this->auth_mdl->user_login($username,$password,TRUE)){
 			$array = array('flag'=>true,'redirect'=>base_url('systemset/index'));
 		}else{
 			$array = array('flag'=>false);
@@ -23,5 +25,8 @@ class Post extends Admin_Controller{
 	}
 	function login_test(){
 		print_r($this->auth_mdl->user_login('admin','eg2014'));
+	}
+	function s(){
+		print_r($this->auth_mdl->dogwin_check_session());
 	}
 }

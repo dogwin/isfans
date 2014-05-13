@@ -110,7 +110,7 @@ class Auth_mdl extends CI_Model{
 	function dogwin_check_session($force_refresh=FALSE){
 		$S_username = $this->session->userdata('username');
 		$S_password = $this->session->userdata('password');
-		//echo "sslslslsls".$S_username;
+		
 		if(empty($S_username)||empty($S_password)){
 			return false;
 		}else{
@@ -122,7 +122,7 @@ class Auth_mdl extends CI_Model{
 			//$CI = & get_instance();
 			//已登陆验证
 			$sql = "select * from isfans_administrator where username=? and password=?";
-			$query = $this->db->query($sql,array($S_username,$S_password));
+			$query = $this->rdb->query($sql,array($S_username,$S_password));
 			
 			if($obj = $query->row()) {
 				$this->cache->save($cachekey,$obj,3000);
@@ -162,7 +162,7 @@ class Auth_mdl extends CI_Model{
 	 * user update
 	 */
 	function user_update($array_data,$username,$password){	
-		$up = $this->db->update('isfans_administrator',$array_data,array('username'=>$username,'password'=>$password));
+		$up = $this->wdb->update('isfans_administrator',$array_data,array('username'=>$username,'password'=>$password));
 		$this->check_login($username,$password,TRUE);
 		return $up;
 	}
@@ -171,7 +171,7 @@ class Auth_mdl extends CI_Model{
 	 */
 	function user_login($username,$password,$force_refresh=FALSE){
 		$sql = "select * from isfans_administrator where username=?";
-		$query = $this->db->query($sql,array($username));
+		$query = $this->rdb->query($sql,array($username));
 		if($query->num_rows()>0){
 			$row = $query->row();
 			$new_ps = $this->dogwin_decrypt_password($row->password,$password);
@@ -179,9 +179,10 @@ class Auth_mdl extends CI_Model{
 				$cachekey = 'user_login_'.$username;
 				$data	= $this->cache->get($cachekey);
 				if( FALSE!==$data && TRUE!=$force_refresh ) {
+					$this->dogwin_set_session($username,$new_ps);
 					return $data;
 				}
-				$CI = & get_instance();
+				//$CI = & get_instance();
 				if($row){
 					$this->cache->save($cachekey,$row,3000);
 					$this->dogwin_set_session($username,$new_ps);
@@ -206,7 +207,7 @@ class Auth_mdl extends CI_Model{
 		if( FALSE!==$data && TRUE!=$force_refresh ) {
 			return $data;
 		}
-		$CI = & get_instance();
+		//$CI = & get_instance();
 		
 		$sql = "select * from isfans_administrator where username='$username' and password='$password'";
 		$query = $this->rdb->query($sql);

@@ -5,10 +5,13 @@
  * @website http://isfans.com
  * @date 2014-04-29
  */
-class Isfansjs extends Admin_Controller{
+class Isfansjs extends CI_Controller{
 	function __construct(){
 		parent::__construct();
 		$this->load->model(array('error_mdl'));
+		$this->load->library('session');
+		$this->settings->load('backend');
+		$this->load->switch_theme(setting('backend_theme'));
 	}
 	/**
 	 * author
