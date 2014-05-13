@@ -13,10 +13,8 @@ class Systemset extends Admin_Controller{
 	
 	public function index(){
 		$data = array();
-		echo "ll==>".$this->session->userdata('username');
-		print_r($this->session->all_userdata());
-		print_r($this->auth_mdl->dogwin_check_session());
-		//$this->_template('systemset/index',$data);
+		
+		$this->_template('systemset/index',$data);
 	}
 	/**
 	 * menus

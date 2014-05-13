@@ -43,17 +43,11 @@ abstract class Admin_Controller extends CI_Controller
 	 */
 	protected function _check_login()
 	{
-		$CI =& get_instance();
-		echo "ll==>".$CI->session->userdata('username');
-		print_r($CI->session->all_userdata());
-		print_r($CI->auth_mdl->dogwin_check_session());
-		//$this->ci->load->model(array('auth_mdl'));
-		//$this->ci->load->driver('cache', array('adapter' => 'file', 'backup' => 'file'));
 		$this->_admin = $this->auth_mdl->dogwin_check_session();
-		print_r($this->_admin);
+		//print_r($this->_admin);
 		if(!$this->_admin){
 			//unlogged
-			//redirect(base_url('author/login'));
+			redirect(base_url('author/login'));
 			exit();
 		}
 		/*if ( ! $this->session->userdata('uid'))
