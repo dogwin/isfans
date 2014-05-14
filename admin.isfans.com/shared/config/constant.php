@@ -13,9 +13,9 @@
 
     define('HC_JY_VERSION', 'V1.0.0');
     
-    define('HC_JY_SHARE_PATH', BASEPATH . '../shared/');//HC_JY_SHARE_PATH
+    define('HC_JY_SHARE_PATH', 'shared/');
     
-    define('HC_JY_EXTENSION_PATH', BASEPATH . '../extensions/');
+    define('HC_JY_EXTENSION_PATH', 'extensions/');
 
 /* End of file constant.php */
 /* Location: ./shared/config/constant.php */

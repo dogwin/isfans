@@ -13,7 +13,9 @@ class Cache_mdl extends CI_Model
      */
 	public function __construct()
 	{
-		parent::__construct();	
+		parent::__construct();
+		$this->wdb = $this->load->database('wdb', TRUE);
+		$this->rdb = $this->load->database('rdb', TRUE);
 	}
 
 	// ------------------------------------------------------------------------
@@ -49,15 +51,15 @@ class Cache_mdl extends CI_Model
      */
 	public function update_menu_cache()
 	{
-		$table_menu = $this->db_setting->dbprefix('menus');
-		$level_1_menus = $this->db_setting->select('menu_id, class_name, method_name, menu_name, menu_parent')
+		$table_menu = $this->rdb->dbprefix('menus');
+		$level_1_menus = $this->rdb->select('menu_id, class_name, method_name, menu_name, menu_parent')
 								  ->where('menu_level', 0) 
 								  ->where('menu_parent', 0)
 								  ->get($table_menu)
 								  ->result_array();
 		foreach ($level_1_menus as & $i)
 		{
-			$level_2_menus = $this->db_setting->select('menu_id, class_name, method_name, menu_name, menu_parent')
+			$level_2_menus = $this->rdb->select('menu_id, class_name, method_name, menu_name, menu_parent')
 									  ->where('menu_level', 1)
 									  ->where('menu_parent', $i['menu_id'])
 									  ->get($table_menu)
@@ -65,7 +67,7 @@ class Cache_mdl extends CI_Model
 			foreach ($level_2_menus as & $j)
 			{
 				
-				$level_3_menus = $this->db_setting->select('menu_id, class_name, method_name, menu_name, menu_parent')
+				$level_3_menus = $this->rdb->select('menu_id, class_name, method_name, menu_name, menu_parent')
 											  ->where('menu_level', 2)
 											  ->where('menu_parent', $j['menu_id'])
 											  ->get($table_menu)
@@ -93,15 +95,15 @@ class Cache_mdl extends CI_Model
 		if ($target)
 		{
 			$target = is_array($target) ? $target : array($target);
-			$this->db_setting->where_in('id', $target);
+			$this->rdb->where_in('id', $target);
 		}
-		$roles = $this->db_setting->get($this->db_setting->dbprefix('roles'))->result_array();
+		$roles = $this->rdb->get($this->rdb->dbprefix('roles'))->result_array();
 		foreach ($roles as & $role)
 		{	
 			$role['rights'] = explode(',', $role['rights']);
-			$rights = $this->db_setting->select('right_class, right_method, right_detail')
+			$rights = $this->rdb->select('right_class, right_method, right_detail')
 							   ->where_in('right_id', $role['rights'])
-							   ->get($this->db_setting->dbprefix('rights'))
+							   ->get($this->rdb->dbprefix('rights'))
 							   ->result();
 			$role['rights'] = array();
 			foreach ($rights as $right)
@@ -124,7 +126,7 @@ class Cache_mdl extends CI_Model
      */
 	public function update_site_cache()
 	{
-		$data = $this->db_setting->get($this->db_setting->dbprefix('site_settings'))->row_array();
+		$data = $this->rdb->get($this->rdb->dbprefix('site_settings'))->row_array();
 		$this->platform->cache_write(HC_JY_SHARE_PATH . 'settings/site.php', 
 									 array_to_cache("setting", $data));	
 	}
@@ -139,7 +141,7 @@ class Cache_mdl extends CI_Model
      */
 	public function update_backend_cache()
 	{
-		$data = $this->db_setting->get($this->db_setting->dbprefix('backend_settings'))->row_array();
+		$data = $this->rdb->get($this->rdb->dbprefix('backend_settings'))->row_array();
 		$this->platform->cache_write(HC_JY_SHARE_PATH . 'settings/backend.php', 
 									 array_to_cache("setting", $data));	
 	}

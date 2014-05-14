@@ -31,8 +31,8 @@ $setting['menus']=array (
       1 => 
       array (
         'menu_id' => '4',
-        'class_name' => 'setting',
-        'method_name' => 'site',
+        'class_name' => 'systemset',
+        'method_name' => 'setting',
         'menu_name' => '系统设置',
         'menu_parent' => '1',
         'sub_menus' => 
@@ -40,7 +40,7 @@ $setting['menus']=array (
           0 => 
           array (
             'menu_id' => '5',
-            'class_name' => 'setting',
+            'class_name' => 'systemset',
             'method_name' => 'site',
             'menu_name' => '接口设置',
             'menu_parent' => '4',
@@ -48,7 +48,7 @@ $setting['menus']=array (
           1 => 
           array (
             'menu_id' => '6',
-            'class_name' => 'setting',
+            'class_name' => 'systemset',
             'method_name' => 'backend',
             'menu_name' => '后台设置',
             'menu_parent' => '4',
@@ -71,7 +71,7 @@ $setting['menus']=array (
           ),
           4 => 
           array (
-            'menu_id' => '27',
+            'menu_id' => '9',
             'class_name' => 'systemset',
             'method_name' => 'clearcache',
             'menu_name' => '清除数据缓存',
@@ -79,25 +79,25 @@ $setting['menus']=array (
           ),
           5 => 
           array (
-            'menu_id' => '28',
-            'class_name' => 'pagesetting',
-            'method_name' => 'index',
+            'menu_id' => '10',
+            'class_name' => 'systemset',
+            'method_name' => 'page',
             'menu_name' => '一级页面设置',
             'menu_parent' => '4',
           ),
-        		6 =>
-        		array (
-        				'menu_id' => '29',
-        				'class_name' => 'systemset',
-        				'method_name' => 'menus',
-        				'menu_name' => '菜单管理',
-        				'menu_parent' => '4',
-        		),
+          6 => 
+          array (
+            'menu_id' => '11',
+            'class_name' => 'systemset',
+            'method_name' => 'view',
+            'menu_name' => '菜单管理',
+            'menu_parent' => '4',
+          ),
         ),
       ),
       2 => 
       array (
-        'menu_id' => '14',
+        'menu_id' => '12',
         'class_name' => 'role',
         'method_name' => 'view',
         'menu_name' => '权限管理',
@@ -106,25 +106,25 @@ $setting['menus']=array (
         array (
           0 => 
           array (
-            'menu_id' => '15',
+            'menu_id' => '13',
             'class_name' => 'role',
             'method_name' => 'view',
             'menu_name' => '角色管理',
-            'menu_parent' => '14',
+            'menu_parent' => '12',
           ),
           1 => 
           array (
-            'menu_id' => '16',
+            'menu_id' => '14',
             'class_name' => 'user',
             'method_name' => 'view',
             'menu_name' => '管理员管理',
-            'menu_parent' => '14',
+            'menu_parent' => '12',
           ),
         ),
       ),
       3 => 
       array (
-        'menu_id' => '25',
+        'menu_id' => '15',
         'class_name' => 'member',
         'method_name' => 'home',
         'menu_name' => '会员管理',
@@ -133,33 +133,17 @@ $setting['menus']=array (
         array (
           0 => 
           array (
-            'menu_id' => '29',
-            'class_name' => 'member_enter',
-            'method_name' => 'view',
-            'menu_name' => '企业管理',
-            'menu_parent' => '25',
-          ),
-          1 => 
-          array (
-            'menu_id' => '26',
+            'menu_id' => '16',
             'class_name' => 'member',
             'method_name' => 'view',
             'menu_name' => '会员管理',
-            'menu_parent' => '25',
-          ),
-          2 => 
-          array (
-            'menu_id' => '41',
-            'class_name' => 'member_push',
-            'method_name' => 'view',
-            'menu_name' => '企业推送',
-            'menu_parent' => '25',
+            'menu_parent' => '15',
           ),
         ),
       ),
       4 => 
       array (
-        'menu_id' => '31',
+        'menu_id' => '17',
         'class_name' => 'area',
         'method_name' => 'view',
         'menu_name' => '地区管理',
@@ -168,33 +152,33 @@ $setting['menus']=array (
         array (
           0 => 
           array (
-            'menu_id' => '32',
+            'menu_id' => '18',
             'class_name' => 'area_city',
             'method_name' => 'view',
             'menu_name' => '城市管理',
-            'menu_parent' => '31',
+            'menu_parent' => '17',
           ),
           1 => 
           array (
-            'menu_id' => '33',
+            'menu_id' => '19',
             'class_name' => 'area_province',
             'method_name' => 'view',
             'menu_name' => '省份管理',
-            'menu_parent' => '31',
+            'menu_parent' => '17',
           ),
           2 => 
           array (
-            'menu_id' => '34',
+            'menu_id' => '20',
             'class_name' => 'area_country',
             'method_name' => 'view',
             'menu_name' => '国家管理',
-            'menu_parent' => '31',
+            'menu_parent' => '17',
           ),
         ),
       ),
       5 => 
       array (
-        'menu_id' => '35',
+        'menu_id' => '21',
         'class_name' => 'category',
         'method_name' => 'view',
         'menu_name' => '分类管理',
@@ -203,26 +187,26 @@ $setting['menus']=array (
         array (
           0 => 
           array (
-            'menu_id' => '36',
+            'menu_id' => '22',
             'class_name' => 'category',
             'method_name' => 'view',
             'menu_name' => '帖子分类管理',
-            'menu_parent' => '35',
+            'menu_parent' => '21',
           ),
           1 => 
           array (
-            'menu_id' => '37',
+            'menu_id' => '23',
             'class_name' => 'sort_category',
             'method_name' => 'view',
             'menu_name' => '排布分类管理',
-            'menu_parent' => '35',
+            'menu_parent' => '21',
           ),
         ),
       ),
       6 => 
       array (
-        'menu_id' => '38',
-        'class_name' => 'posts',
+        'menu_id' => '24',
+        'class_name' => 'post',
         'method_name' => 'view',
         'menu_name' => '帖子管理',
         'menu_parent' => '1',
@@ -230,19 +214,19 @@ $setting['menus']=array (
         array (
           0 => 
           array (
-            'menu_id' => '39',
-            'class_name' => 'posts',
+            'menu_id' => '25',
+            'class_name' => 'post',
             'method_name' => 'view',
             'menu_name' => '帖子管理',
-            'menu_parent' => '38',
+            'menu_parent' => '24',
           ),
           1 => 
           array (
-            'menu_id' => '40',
-            'class_name' => 'post_report',
+            'menu_id' => '26',
+            'class_name' => 'post_common',
             'method_name' => 'view',
-            'menu_name' => '帖子举报管理',
-            'menu_parent' => '38',
+            'menu_name' => '帖子评论管理',
+            'menu_parent' => '24',
           ),
         ),
       ),

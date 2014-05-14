@@ -12,8 +12,7 @@ class Systemset extends Admin_Controller{
 	}
 	
 	public function index(){
-		$data = array();
-		
+		$data = array();	
 		$this->_template('systemset/index',$data);
 	}
 	/**
@@ -54,5 +53,23 @@ class Systemset extends Admin_Controller{
 	}
 	//-------------------------end menus------------------------------//
 	
+	/**
+	 * cache
+	 */
+	public function cache(){
+		$data = array();
+		$this->_check_permit();
+		$this->_template('systemset/cache',$data);
+	}
+	public function postcache(){
+		$this->_check_permit();
+		$cache = $this->input->post('cache');
+		if ($cache AND is_array($cache))
+		{
+			update_cache($cache);
+		}
+		$this->_message("缓存更新成功！", '', TRUE);
+	}
+	//-------------------------end cache------------------------------//
 	
 }

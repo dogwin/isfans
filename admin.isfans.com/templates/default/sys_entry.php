@@ -119,7 +119,7 @@ if(isset($data_hcjf['pl'])&&!empty($data_hcjf['pl'])){
 					<li class="dropdown user">
 						<a href="#" class="dropdown-toggle" data-toggle="dropdown">
 						<img alt="" src="<?= base_url()?>asset/default/media/image/avatar1_small.jpg" />
-						<span class="username">欢迎 <?php //echo $this->_admin->username; ?></span>
+						<span class="username">欢迎 <?php echo $this->_admin->username; ?></span>
 							<i class="icon-angle-down"></i>
 						</a>
 						<ul class="dropdown-menu">
@@ -196,7 +196,7 @@ if(isset($data_hcjf['pl'])&&!empty($data_hcjf['pl'])){
 	<!-- BEGIN FOOTER -->
 	<div class="footer">
 		<div class="footer-inner">
-			<?= date('Y',time())?> &copy; 小堂菜.
+			<?= "2013-".date('Y',time())?> &copy; 如来实义
 		</div>
 		<div class="footer-tools">
 			<span class="go-top">

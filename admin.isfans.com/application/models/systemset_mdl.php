@@ -35,8 +35,7 @@ class Systemset_mdl extends CI_Model{
 			}
 		}
 		return $this->db->from($table)
-		->order_by('parent_id','ASC')
-		->order_by('sort','ASC')
+		->order_by('menu_parent','ASC')
 		->get()
 		->result();
 	}
@@ -50,7 +49,7 @@ class Systemset_mdl extends CI_Model{
 		if( FALSE!==$data && TRUE!=$force_refresh ) {
 			return $data;
 		}
-		$sql = 'SELECT * FROM isfans_menus WHERE id="'.$id.'" LIMIT 1';
+		$sql = 'SELECT * FROM isfans_menus WHERE menu_id="'.$id.'" LIMIT 1';
 		$query	= $this->db->query($sql, FALSE);
 		if($obj = $query->row()) {
 			$this->cache->save($cachekey,$obj,3000);

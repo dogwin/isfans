@@ -50,19 +50,6 @@ abstract class Admin_Controller extends CI_Controller
 			redirect(base_url('author/login'));
 			exit();
 		}
-		/*if ( ! $this->session->userdata('uid'))
-		{
-			redirect(setting('backend_access_point') . '/login');
-		}
-		else
-		{
-			$this->_admin = $this->adminuser_mdl->get_full_user_by_username($this->session->userdata('uid'), 'uid');
-			if ($this->_admin->status != 1)
-			{
-				$this->session->set_flashdata('error', "此帐号已被冻结,请联系管理员!");
-				redirect(setting('backend_access_point') . '/login');
-			}
-		}*/
 	}
 	
 	// ------------------------------------------------------------------------

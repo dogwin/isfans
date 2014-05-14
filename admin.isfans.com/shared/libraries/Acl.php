@@ -202,6 +202,7 @@ class Acl
 			foreach ($v['sub_menus'] as $jkey => & $j)
 			{
 				//if ($j['class_name'] == $folder . $class_name AND ($j['method_name'] == $method_name || $method_name=='add' || $method_name=='edit' || $method_name=='show'))
+				
 				if ($j['class_name'] == $folder . $class_name AND ($j['method_name'] == $method_name ||$method_name == $j['method_name']."_edit"))
 				{
 					$j['current'] = TRUE;

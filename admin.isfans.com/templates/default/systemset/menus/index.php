@@ -58,11 +58,11 @@ if (!defined('BASEPATH'))
               				<?php foreach($list as $v) : ?>
                 			<tr class="odd gradeX">
                 				<td></td>
-                				<td><?php echo $v->parent_id?$this->systemset_mdl->get_menu_by_id($v->parent_id)->title:'根目录';?></td>
-                  				<td><?php echo $v -> title; ?></td>
+                				<td><?php echo $v->menu_parent?$this->systemset_mdl->get_menu_by_id($v->menu_parent)->menu_name:'根目录';?></td>
+                  				<td><?php echo $v -> menu_name; ?></td>
                   				<td>
-				  					<a class="" href="<?php echo backend_url('systemset/menus/edit/' . $v -> id); ?>"><span class="label label-success">修改</span></a>
-                    				<a class="confirm_delete" href="<?php echo backend_url('systemset/menus/del/' . $v -> id); ?>"><span class="label label-success">删除</span></a>
+				  					<a class="" href="<?php echo backend_url('systemset/menus/edit/' . $v -> menu_id); ?>"><span class="label label-success">修改</span></a>
+                    				<a class="confirm_delete" href="<?php echo backend_url('systemset/menus/del/' . $v -> menu_id); ?>"><span class="label label-success">删除</span></a>
 				  				</td>
                 			</tr>
                 			<?php endforeach; ?>
