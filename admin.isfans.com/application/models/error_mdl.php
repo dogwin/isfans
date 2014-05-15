@@ -22,4 +22,18 @@ class Error_mdl extends CI_Model{
 		);
 		return $array;
 	}
+	/**
+	 * system setting
+	 */
+	public function systemsetError(){
+		$array = array(
+			'MN_Parent' => '请选择父类！',
+			'MN_Menuname' => '菜单名称不为空！',
+			'MN_Methodname' => '控制器不为空！',
+			'MN_Classname' => '页面不为空！',
+			'MN_Level' => '等级为数字！'
+		);
+		return $array;
+	}
+	//---------------------------end system setting-------------------------//
 }

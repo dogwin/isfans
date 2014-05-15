@@ -23,10 +23,11 @@ class Post extends CI_Controller{
 		}
 		echo json_encode($array);
 	}
-	function login_test(){
-		print_r($this->auth_mdl->user_login('admin','eg2014'));
+	/**
+	 * menus 
+	 */
+	function menus_post(){
+		
 	}
-	function s(){
-		print_r($this->auth_mdl->dogwin_check_session());
-	}
+	//-------------------------end menus------------------------------//
 }

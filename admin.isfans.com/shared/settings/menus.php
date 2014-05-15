@@ -89,7 +89,7 @@ $setting['menus']=array (
           array (
             'menu_id' => '11',
             'class_name' => 'systemset',
-            'method_name' => 'view',
+            'method_name' => 'menus',
             'menu_name' => '菜单管理',
             'menu_parent' => '4',
           ),

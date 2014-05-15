@@ -24,7 +24,7 @@ abstract class Admin_Controller extends CI_Controller
 	{
 		parent::__construct();
 		
-		$this->load->library('session');
+		$this->load->library(array('session','form'));
 		$this->settings->load('backend');
 		$this->load->model(array('auth_mdl'));
 		$this->load->switch_theme(setting('backend_theme'));

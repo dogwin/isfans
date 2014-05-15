@@ -19,6 +19,12 @@ class Isfansjs extends CI_Controller{
 	public function author(){
 		$this->data['error'] = $this->error_mdl->authorError();
 		$this->load->view('js/author',$this->data);
-	} 
+	}
+	 
 	// ---------------------------------------------------------------------
+	
+	public function systemset(){
+		$data['error'] = $this->error_mdl->systemsetError();
+		$this->load->view('js/systemset',$data);
+	}
 }

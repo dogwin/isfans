@@ -14,7 +14,7 @@ class Systemset_mdl extends CI_Model{
 	public function get_menus_num($word=array()){
 		if(!empty($word)){
 			if(isset($word['keyword'])&&!empty($word['keyword'])){
-				$this->rdb->like('name',$word['keyword']);
+				$this->rdb->like('menu_name',$word['keyword']);
 			}
 		}
 		return $this->rdb->count_all_results($this->db->dbprefix('menus'));
@@ -31,7 +31,7 @@ class Systemset_mdl extends CI_Model{
 		}
 		if(!empty($word)){
 			if(isset($word['keyword'])&&!empty($word['keyword'])){
-				$this->db->like('name',$word['keyword']);
+				$this->db->like('menu_name',$word['keyword']);
 			}
 		}
 		return $this->db->from($table)
@@ -68,11 +68,11 @@ class Systemset_mdl extends CI_Model{
 		}
 		$table = $this->db->dbprefix('menus');
 		$result = $this->db->from($table)
-		->where('parent_id',0)
+		->where('menu_parent <',2)
 		->get()
 		->result();
 		foreach ($result as $row){
-			$menuArr[$row->id] = $row->title;
+			$menuArr[$row->menu_id] = $row->menu_name;
 		}
 		if(count($menuArr)){
 			$this->cache->save($cachekey,$menuArr,3000);

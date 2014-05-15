@@ -39,16 +39,30 @@ class Systemset extends Admin_Controller{
 		$this->_template('systemset/menus/index',$data);
 	}
 	public function menus_edit(){
-		$menuID = $this->uri->segment(3,0);
+		$data['menuID'] = $menuID = $this->uri->segment(4,0);
 		$data['menuArr'] = $this->systemset_mdl->get_parent_menus_Arr(TRUE);
+		
 		if($menuID){
 			//update
 			$menuInfo = $this->systemset_mdl->get_menu_by_id($menuID);
-			
+			if($menuInfo){
+				$data['class_name'] = $menuInfo->class_name;
+				$data['method_name'] = $menuInfo->method_name;
+				$data['menu_name'] = $menuInfo->menu_name;
+				$data['menu_level'] = $menuInfo->menu_level;
+				$data['menu_parent'] = $menuInfo->menu_parent;
+			}else{
+				$this->_message("不存在此菜单！", '', TRUE);
+			}
 		}else{
 			//add
-			
+			$data['class_name'] = '';
+			$data['method_name'] = '';
+			$data['menu_name'] = '';
+			$data['menu_level'] = 2;
+			$data['menu_parent'] = 1;
 		}
+		
 		$this->_template('systemset/menus/edit',$data);
 	}
 	//-------------------------end menus------------------------------//
