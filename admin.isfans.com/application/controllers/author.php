@@ -2,7 +2,7 @@
 class Author extends CI_Controller{
 	function __construct(){
 		parent::__construct();
-		$this->load->library('session');
+		$this->load->library(array('session','phpmail'));
 		$this->settings->load('backend');
 		$this->load->switch_theme(setting('backend_theme'));
 		$this->load->model(array('author_mdl','auth_mdl'));
@@ -21,5 +21,16 @@ class Author extends CI_Controller{
 	}
 	function login(){
 		$this->load->view('author/login');
+	}
+	function sendem(){
+		$data = array();
+		$body = $this->load->view('edm',$data,true);
+		//echo $body;
+		//$this->phpmail->send_email('weblsfamily@gmail.com','weblsfamily@gmail.com','email test',$body,'Darren.Miao');
+		$this->phpmail->send_email('80178608@qq.com','weblsfamily@gmail.com','email test', $body,'Darren.Miao');
+	}
+	function get(){
+		$myt = $_POST['myt'];
+		echo $myt;
 	}
 }

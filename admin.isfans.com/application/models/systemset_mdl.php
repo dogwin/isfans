@@ -81,5 +81,37 @@ class Systemset_mdl extends CI_Model{
 		$this->cache->delete($cachekey);
 		return FALSE;
 	}
+	//update menus
+	function updateMenus($tb,$data,$wh,$id){
+		$table = $this->db->dbprefix($tb);
+		if($flag = $this->update($table,$data,$wh)){
+			//
+			$this->get_menu_by_id($id, true);
+		}
+		return $flag;
+	}
+	//insert menus
+	function insertMenus($tb,$data){
+		if($id = $this->insert($tb,$data)){
+			$this->get_menu_by_id($id, true);
+		}
+		return $id;
+	}
 	//-----------------------------end menus-----------------------------//
+	
+	/**
+	 * base function 
+	 */
+	//insert
+	function insert($tb,$data){
+		return $this->wdb->insert_id($tb,$data);
+	}
+	//update
+	function update($tb,$data,$wh){
+		return $this->wdb->update($tb,$data,$wh);
+	}
+	//delete
+	function delete($tb,$wh){
+		return $this->wdb->delete($tb,$wh);
+	}	
 }

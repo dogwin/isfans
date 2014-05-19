@@ -61,10 +61,22 @@ if (!defined('BASEPATH'))
                 				<td><?php echo $v->menu_parent?$this->systemset_mdl->get_menu_by_id($v->menu_parent)->menu_name:'根目录';?></td>
                   				<td><?php echo $v -> menu_name; ?></td>
                   				<td>
-				  					<a class="" href="<?php echo backend_url('systemset/menus/edit/' . $v -> menu_id); ?>"><span class="label label-success">修改</span></a>
+				  					<a class="" href="<?php echo backend_url('systemset/menus/edit/' . $v -> menu_id.'/'.(isset($_GET['page'])?$_GET['page']:'')); ?>"><span class="label label-success">修改</span></a>
                     				<a class="confirm_delete" href="<?php echo backend_url('systemset/menus/del/' . $v -> menu_id); ?>"><span class="label label-success">删除</span></a>
+                    				<a href='#myAlert<?= $v->menu_id?>' class="tip-top" data-toggle="modal" data-original-title="删除"><i class="icon-remove"></i></a>
+                    				<div id="myAlert<?= $v->menu_id;?>" class="modal hide">
+						              <div class="modal-header">
+						                <button data-dismiss="modal" class="close" type="button">×</button>
+						                <h3>删除菜单</h3>
+						              </div>
+						              <div class="modal-body">
+						                <p>确定要删除<?= $v -> menu_name?>吗?</p>
+						              </div>
+						              <div class="modal-footer"> <a class="btn btn-primary" href="<?= base_url(); ?>hcadmin/menus_list/tab:del/id:">确定</a> <a data-dismiss="modal" class="btn" href="#">取消</a> </div>
+						            </div>
 				  				</td>
                 			</tr>
+                			
                 			<?php endforeach; ?>
               			</tbody>
             		</table>

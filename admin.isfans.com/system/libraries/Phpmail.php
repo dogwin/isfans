@@ -5,7 +5,7 @@ class CI_Phpmail{
 		 define('GUSER', 'no-reply@brandtemper.com'); // GMail username
 		 define('GPWD', 'f00a37f20da99117cb71f60bc319cc69'); // GMail password
 	}
-	/*
+	
 	function send_email($to, $sender, $subject, $message,$title='Brand.com Daily send'){
 	    $mail = new PHPMailer(true);
 	    $body = $message;//preg_replace('/\\\\/','', $message);
@@ -25,8 +25,8 @@ class CI_Phpmail{
 	    $mail->AddAddress($to);
 		return $mail->Send();
 	}
-	*/
-	function send_email($to,$from,$subject,$body,$from_name) {
+	
+	/*function send_email($to,$from,$subject,$body,$from_name) {
 		global $error;
 		$mail = new PHPMailer();  // create a new object
 		$mail->IsSMTP(); // enable SMTP
@@ -57,9 +57,9 @@ class CI_Phpmail{
 		} else {
 			$error = 'Message sent!';
 			return true;
-		}*/
+		}
 	}
 	function test(){
 		echo "hello";
-	}
+	}*/
 } 

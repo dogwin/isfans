@@ -40,6 +40,7 @@ class Systemset extends Admin_Controller{
 	}
 	public function menus_edit(){
 		$data['menuID'] = $menuID = $this->uri->segment(4,0);
+		$data['page'] = $this->uri->segment(5,0);
 		$data['menuArr'] = $this->systemset_mdl->get_parent_menus_Arr(TRUE);
 		
 		if($menuID){
