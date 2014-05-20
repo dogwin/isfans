@@ -66,6 +66,25 @@ class Systemset extends Admin_Controller{
 		
 		$this->_template('systemset/menus/edit',$data);
 	}
+	//menus del
+	function menus_del(){
+		$data['menuID'] = $menuID = $this->uri->segment(4,0);
+		$page = isset($_GET['page'])?$_GET['page']:'';
+		$menuInfo = $this->systemset_mdl->get_menu_by_id($menuID);
+		if($menuInfo){
+			if($this->systemset_mdl->deleteMenus('menus',array('menu_id'=>$menuID))){
+				//delete success
+				$this->_message("删除菜单成功！", '', TRUE);
+			}else{
+				//delete failed
+				$this->_message("删除菜单失败！", '', TRUE);
+			}
+		}else{
+			//not exist
+			$this->_message("不存在此菜单！", '', TRUE);
+		}
+		 
+	}
 	//-------------------------end menus------------------------------//
 	
 	/**

@@ -82,9 +82,8 @@ class Systemset_mdl extends CI_Model{
 		return FALSE;
 	}
 	//update menus
-	function updateMenus($tb,$data,$wh,$id){
-		$table = $this->db->dbprefix($tb);
-		if($flag = $this->update($table,$data,$wh)){
+	function updateMenus($tb,$data,$wh,$id){		
+		if($flag = $this->update($tb,$data,$wh)){
 			//
 			$this->get_menu_by_id($id, true);
 		}
@@ -97,6 +96,10 @@ class Systemset_mdl extends CI_Model{
 		}
 		return $id;
 	}
+	//delete menus
+	function deleteMenus($tb,$wh){
+		return $this->delete($tb,$wh);
+	}
 	//-----------------------------end menus-----------------------------//
 	
 	/**
@@ -104,14 +107,17 @@ class Systemset_mdl extends CI_Model{
 	 */
 	//insert
 	function insert($tb,$data){
+		$tb = $this->db->dbprefix($tb);
 		return $this->wdb->insert_id($tb,$data);
 	}
 	//update
 	function update($tb,$data,$wh){
+		$tb = $this->db->dbprefix($tb);
 		return $this->wdb->update($tb,$data,$wh);
 	}
 	//delete
 	function delete($tb,$wh){
+		$tb = $this->db->dbprefix($tb);
 		return $this->wdb->delete($tb,$wh);
 	}	
 }

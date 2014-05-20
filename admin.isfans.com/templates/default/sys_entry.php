@@ -21,6 +21,8 @@
 <link href="<?= base_url()?>asset/default/media/css/style-responsive.css" rel="stylesheet" type="text/css"/>
 <link href="<?= base_url()?>asset/default/media/css/default.css" rel="stylesheet" type="text/css" id="style_color"/>
 <link href="<?= base_url()?>asset/default/media/css/uniform.default.css" rel="stylesheet" type="text/css"/>
+<!-- 
+<link rel="stylesheet" href="<?= base_url() ?>asset/default/media/css/matrix-style.css" />-->
 <?php
 $data_hcjf = $this->_data_hcjf;
 if(isset($data_hcjf['css'])&&!empty($data_hcjf['css'])){
@@ -30,7 +32,8 @@ if(isset($data_hcjf['css'])&&!empty($data_hcjf['css'])){
 }
 ?>
 <link href="<?= base_url()?>asset/default/media/font-awesome/css/font-awesome.css" rel="stylesheet" />
-<link href='http://fonts.googleapis.com/css?family=Open+Sans:400,700,800' rel='stylesheet' type='text/css'>
+<!-- 
+<link href='http://fonts.googleapis.com/css?family=Open+Sans:400,700,800' rel='stylesheet' type='text/css'>-->
 
 <script src="<?= base_url()?>asset/default/media/js/jquery-1.10.1.min.js" type="text/javascript"></script>
 <script src="<?= base_url()?>asset/default/media/js/jquery-migrate-1.2.1.min.js" type="text/javascript"></script>
@@ -232,21 +235,6 @@ if(isset($data_hcjf['init'])&&!empty($data_hcjf['init'])){
 ?>
 	});
 
-</script>
-
-<script type="text/javascript">
-    var _gaq = _gaq || [];
-    _gaq.push(['_setAccount', 'UA-37564768-1']);
-    _gaq.push(['_setDomainName', 'keenthemes.com']);
-    _gaq.push(['_setAllowLinker', true]);
-    _gaq.push(['_trackPageview']); (function() {
-        var ga = document.createElement('script');
-        ga.type = 'text/javascript';
-        ga.async = true;
-        ga.src = ('https:' == document.location.protocol ? 'https://': 'http://') + 'stats.g.doubleclick.net/dc.js';
-        var s = document.getElementsByTagName('script')[0];
-        s.parentNode.insertBefore(ga, s);
-    })();
 </script>
 </body>
 </html>

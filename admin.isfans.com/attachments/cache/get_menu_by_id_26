@@ -1,1 +1,1 @@
-a:3:{s:4:"time";i:1400488538;s:3:"ttl";i:3000;s:4:"data";O:8:"stdClass":6:{s:7:"menu_id";s:2:"26";s:10:"class_name";s:11:"post_common";s:11:"method_name";s:4:"view";s:9:"menu_name";s:18:"帖子评论管理";s:10:"menu_level";s:1:"2";s:11:"menu_parent";s:2:"24";}}
+a:3:{s:4:"time";i:1400569214;s:3:"ttl";i:3000;s:4:"data";O:8:"stdClass":6:{s:7:"menu_id";s:2:"26";s:10:"class_name";s:11:"post_common";s:11:"method_name";s:4:"view";s:9:"menu_name";s:18:"帖子评论管理";s:10:"menu_level";s:1:"2";s:11:"menu_parent";s:2:"24";}}

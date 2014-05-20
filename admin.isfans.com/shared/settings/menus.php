@@ -115,8 +115,8 @@ $setting['menus']=array (
           1 => 
           array (
             'menu_id' => '14',
-            'class_name' => 'user',
-            'method_name' => 'view',
+            'class_name' => 'admin',
+            'method_name' => 'index',
             'menu_name' => '管理员管理',
             'menu_parent' => '12',
           ),
@@ -212,22 +212,6 @@ $setting['menus']=array (
         'menu_parent' => '1',
         'sub_menus' => 
         array (
-          0 => 
-          array (
-            'menu_id' => '25',
-            'class_name' => 'post',
-            'method_name' => 'view',
-            'menu_name' => '帖子管理',
-            'menu_parent' => '24',
-          ),
-          1 => 
-          array (
-            'menu_id' => '26',
-            'class_name' => 'post_common',
-            'method_name' => 'view',
-            'menu_name' => '帖子评论管理',
-            'menu_parent' => '24',
-          ),
         ),
       ),
     ),

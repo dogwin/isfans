@@ -1,1 +1,1 @@
-a:3:{s:4:"time";i:1400486571;s:3:"ttl";i:3000;s:4:"data";O:8:"stdClass":6:{s:7:"menu_id";s:2:"15";s:10:"class_name";s:6:"member";s:11:"method_name";s:4:"home";s:9:"menu_name";s:12:"会员管理";s:10:"menu_level";s:1:"1";s:11:"menu_parent";s:1:"1";}}
+a:3:{s:4:"time";i:1400570412;s:3:"ttl";i:3000;s:4:"data";O:8:"stdClass":6:{s:7:"menu_id";s:2:"15";s:10:"class_name";s:6:"member";s:11:"method_name";s:4:"home";s:9:"menu_name";s:12:"会员管理";s:10:"menu_level";s:1:"1";s:11:"menu_parent";s:1:"1";}}
