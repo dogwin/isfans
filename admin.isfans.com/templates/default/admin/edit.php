@@ -61,7 +61,7 @@ if (!defined('BASEPATH'))
 	              	<input type='hidden' value='<?php echo $id?>' id='admin_id'>
 	              	<div class="form-actions">
 	              		<div id="errormsg"></div>
-	                	<input type="submit" value="保存" id='menus_save' class="btn blue">
+	                	<input type="submit" value="保存" id='admin_save' class="btn blue">
 	              	</div>
           		</div>
         	</div>

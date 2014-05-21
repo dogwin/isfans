@@ -53,4 +53,34 @@ class Admin extends Admin_Controller{
 		}
 		$this->_template('admin/edit',$data);
 	}
+	function editpost(){
+		$id = $this->input->post('admin_id');
+		$username = $this->input->post('username');
+		$email = $this->input->post('email');
+		$password = $this->input->post('password');
+		$role = $this->input->post('role');
+		$data = array(
+				'username'=>$username,
+				'email'=>$email,
+				'role'=>$role
+		);
+		if($id){
+			//update
+			$admininfo = $this->admin_mdl->get_admin_by_id($id);
+			if($admininfo){	
+				$data['password'] = $this->auth_mdl->dogwin_encrypt_password($password);
+				if($this->admin_mdl->update('administrator',$data,array('id'=>$id))){
+					
+				}else{
+					
+				}
+			}else{
+				//not exist
+				
+			}
+		}else{
+			//add
+		}
+		
+	}
 }

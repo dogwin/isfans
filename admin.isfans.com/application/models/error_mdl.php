@@ -36,4 +36,21 @@ class Error_mdl extends CI_Model{
 		return $array;
 	}
 	//---------------------------end system setting-------------------------//
+	
+	/**
+	 * admin pannel
+	 */
+	public function adminError(){
+		$array = array(
+			'admin_usernamenull'=>'请填写用户名！',
+			'admin_usernameformat'=>'用户名为字母或数字',
+			'admin_emailnull'=>'请填写Email！',
+			'admin_emailformat'=>'请填写正确的Email!',
+			'admin_passwordnull'=>'请填写密码！',
+			'admin_repassword'=>'两次密码不一致！',
+			'admin_role'=>'请选择角色！'
+		);
+		return $array;
+	}
+	//---------------------------end admin pannel-------------------------//
 }

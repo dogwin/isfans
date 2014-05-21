@@ -60,7 +60,7 @@ class Admin_mdl extends CI_Model{
 		return FALSE;
 	}
 	//get role arr 
-	public function get_role_arr(){
+	public function get_role_arr($force_refresh=FALSE){
 		$roleArr = array();
 		$cachekey	= 'get_role_arr';
 		$data	= $this->cache->get($cachekey);
@@ -80,5 +80,25 @@ class Admin_mdl extends CI_Model{
 		}
 		$this->cache->delete($cachekey);
 		return FALSE;
+	}
+	//update 
+	
+	/**
+	 * base function
+	 */
+	//insert
+	function insert($tb,$data){
+		$tb = $this->db->dbprefix($tb);
+		return $this->wdb->insert_id($tb,$data);
+	}
+	//update
+	function update($tb,$data,$wh){
+		$tb = $this->db->dbprefix($tb);
+		return $this->wdb->update($tb,$data,$wh);
+	}
+	//delete
+	function delete($tb,$wh){
+		$tb = $this->db->dbprefix($tb);
+		return $this->wdb->delete($tb,$wh);
 	}
 }

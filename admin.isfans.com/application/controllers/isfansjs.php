@@ -27,4 +27,13 @@ class Isfansjs extends CI_Controller{
 		$data['error'] = $this->error_mdl->systemsetError();
 		$this->load->view('js/systemset',$data);
 	}
+	
+	/**
+	 * admin js
+	 */
+	public function admin(){
+		$data['error'] = $this->error_mdl->adminError();
+		$this->load->view('js/admin',$data);
+	}
+	// ---------------------------------------------------------------------
 }
