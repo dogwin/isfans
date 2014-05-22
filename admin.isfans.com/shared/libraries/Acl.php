@@ -203,7 +203,7 @@ class Acl
 			{
 				//if ($j['class_name'] == $folder . $class_name AND ($j['method_name'] == $method_name || $method_name=='add' || $method_name=='edit' || $method_name=='show'))
 				
-				if ($j['class_name'] == $folder . $class_name AND ($j['method_name'] == $method_name ||$method_name == $j['method_name']."_edit"))
+				if ($j['class_name'] == $folder . $class_name AND ($j['method_name'] == $method_name ||$method_name == $j['method_name']."_edit"||$method_name == 'edit'))
 				{
 					$j['current'] = TRUE;
 					$v['current'] = TRUE;

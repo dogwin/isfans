@@ -1,0 +1,25 @@
+RewriteEngine on    
+#isfans.com
+RewriteCond %{HTTP_HOST} ^isfans$
+RewriteCond %{REQUEST_URI} !^/isfans.com/
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^(.*)$ /isfans.com/$1
+RewriteCond %{HTTP_HOST} ^isfans$
+RewriteRule ^(/)?$ isfans.com/index.php [L]
+#admin.isfans.com
+RewriteCond %{HTTP_HOST} ^admin.isfans$
+RewriteCond %{REQUEST_URI} !^/admin.isfans.com/
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^(.*)$ /admin.isfans.com/$1
+RewriteCond %{HTTP_HOST} ^admin.isfans$
+RewriteRule ^(/)?$ admin.isfans.com/index.php [L]
+#demo.isfans.com
+RewriteCond %{HTTP_HOST} ^demo.isfans$
+RewriteCond %{REQUEST_URI} !^/demo.isfans.com/
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^(.*)$ /demo.isfans.com/$1
+RewriteCond %{HTTP_HOST} ^demo.isfans$
+RewriteRule ^(/)?$ demo.isfans.com/index.php [L]

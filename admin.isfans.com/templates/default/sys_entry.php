@@ -236,5 +236,6 @@ if(isset($data_hcjf['init'])&&!empty($data_hcjf['init'])){
 	});
 
 </script>
+
 </body>
 </html>

@@ -50,7 +50,7 @@ class Admin_mdl extends CI_Model{
 		if( FALSE!==$data && TRUE!=$force_refresh ) {
 			return $data;
 		}
-		$sql = 'SELECT * FROM isfans_administrator WHERE menu_id="'.$id.'" LIMIT 1';
+		$sql = 'SELECT * FROM isfans_administrator WHERE id="'.$id.'" LIMIT 1';
 		$query	= $this->db->query($sql, FALSE);
 		if($obj = $query->row()) {
 			$this->cache->save($cachekey,$obj,3000);
@@ -79,6 +79,29 @@ class Admin_mdl extends CI_Model{
 			return $roleArr;
 		}
 		$this->cache->delete($cachekey);
+		return FALSE;
+	}
+	//check username
+	public function get_admin_by_name($username,$id=0,$force_refresh=FALSE){
+		
+		$cachekey	= 'get_admin_by_name_'.$username;
+		
+		$data	= $this->cache->get($cachekey);
+		if( FALSE!==$data && TRUE!=$force_refresh ) {
+			return $data;
+		}
+		$sql = 'SELECT * FROM isfans_administrator WHERE username="'.$username.'"';
+		if($id){
+			$sql .=" and id!='$id'";
+		}
+		$sql.=' LIMIT 1';
+		
+		$query	= $this->db->query($sql, FALSE);
+		if($obj = $query->row()) {
+			$this->cache->save($cachekey,$obj,3000);
+			return $obj;
+		}
+		//$this->cache->delete($cachekey);
 		return FALSE;
 	}
 	//update 

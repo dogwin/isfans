@@ -49,7 +49,6 @@ class Admin extends Admin_Controller{
 			$data['username'] = '';
 			$data['email'] = '';
 			$data['role'] = '';
-			
 		}
 		$this->_template('admin/edit',$data);
 	}
@@ -64,23 +63,45 @@ class Admin extends Admin_Controller{
 				'email'=>$email,
 				'role'=>$role
 		);
+		
 		if($id){
 			//update
 			$admininfo = $this->admin_mdl->get_admin_by_id($id);
 			if($admininfo){	
-				$data['password'] = $this->auth_mdl->dogwin_encrypt_password($password);
+				if($password){
+					$data['password'] = $this->auth_mdl->dogwin_encrypt_password($password);
+				}
 				if($this->admin_mdl->update('administrator',$data,array('id'=>$id))){
-					
+					$this->admin_mdl->get_admin_by_id($id,TRUE);
+					$this->_message("管理员更新成功！", '', TRUE);
 				}else{
-					
+					$this->_message("管理员更新失败！", '', TRUE);
 				}
 			}else{
 				//not exist
-				
+				$this->_message("管理员不存在！", '', TRUE);
 			}
 		}else{
 			//add
+			$data['password'] = $this->auth_mdl->dogwin_encrypt_password($password);
+			if($id = $this->admin_mdl->insert('administrator',$data)){
+				$this->admin_mdl->get_admin_by_id($id,TRUE);
+				$this->_message("管理员添加成功！", '', TRUE);
+			}else{
+				$this->_message("管理员添加失败！", '', TRUE);
+			}
 		}
+	}
+	//checkusername
+	function checkusername(){
+		$username = $this->input->post('username');
+		$id = $this->input->post('admin_id');
 		
+		if($this->admin_mdl->get_admin_by_name($username,$id)){
+			$array = array('flag'=>TRUE,'msg'=>'很抱歉用户已经存在！');
+		}else{
+			$array = array('flag'=>FALSE);
+		}
+		echo json_encode($array);
 	}
 }
