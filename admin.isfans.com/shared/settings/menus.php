@@ -107,8 +107,8 @@ $setting['menus']=array (
           0 => 
           array (
             'menu_id' => '13',
-            'class_name' => 'role',
-            'method_name' => 'view',
+            'class_name' => 'admin',
+            'method_name' => 'role',
             'menu_name' => '角色管理',
             'menu_parent' => '12',
           ),

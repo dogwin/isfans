@@ -58,7 +58,8 @@ if (!defined('BASEPATH'))
 		                  	<label id="admin_role"></label>
 		                </div>
 	              	</div>
-	              	<input type='hidden' value='<?php echo $id?>' id='admin_id'>
+	              	<input type='hidden' value='<?php echo $id;?>' id='admin_id'>
+	              	<input type='hidden' value='<?php echo $page;?>' id='page'>
 	              	<div class="form-actions">
 	              		<div id="errormsg"></div>
 	                	<input type="submit" value="保存" id='admin_save' class="btn blue">

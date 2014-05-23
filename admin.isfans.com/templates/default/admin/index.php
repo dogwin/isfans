@@ -17,7 +17,7 @@ if (!defined('BASEPATH'))
           		<div class="portlet-title">
 					<div class="caption"><i class="icon-globe"></i>管理员列表</div>
 					<div class="actions">
-						<a class="btn blue" href="<?= base_url() ?>admin/edit"><i class="icon-pencil"></i>添加管理员</a>
+						<a class="btn blue" href="<?= base_url() ?>admin/edit/0/<?php echo $page;?>"><i class="icon-pencil"></i>添加管理员</a>
 						<div class="btn-group action">
 							<a class="btn green" data-toggle="dropdown" href="#"><i class="icon-cogs"></i>操作<i class="icon-angle-down"></i></a>
 							<ul class="dropdown-menu pull-right">
@@ -59,9 +59,9 @@ if (!defined('BASEPATH'))
                 			<tr class="odd gradeX">
                 				<td></td>
                 				<td><?php echo $v->username;?></td>
-                  				<td><?php echo $v ->role; ?></td>
+                  				<td><?php echo $this->admin_mdl->get_role_by_id($v ->role)->name;?></td>
                   				<td>
-				  					<a class="" href="<?php echo base_url('admin/edit/' . $v -> id); ?>"><span class="label label-success">修改</span></a>
+				  					<a class="" href="<?php echo base_url('admin/edit/' . $v -> id.'/'.$page); ?>"><span class="label label-success">修改</span></a>
                     				<a href='#myAlert<?= $v->id?>' class="tip-top" data-toggle="modal" data-original-title="删除"><span class="label label-success">删除</span></a>
                     				<div id="myAlert<?= $v->id;?>" class="modal hide">
 						              <div class="modal-header">

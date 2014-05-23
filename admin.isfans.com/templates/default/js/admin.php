@@ -9,6 +9,13 @@ $(document).ready(function(){
 		var role = $("#role").val();
 		var admin_id = $("#admin_id").val();
 		var errormsg = '';
+		var page = $("#page").val();
+		
+		$("#admin_username").html('');
+		$("#admin_email").html('');
+		$("#admin_password").html('');
+		$("#admin_role").html('');
+		
 		if(username.length<1){
 			$("#admin_username").html('<?php echo $error['admin_usernamenull'];?>');
 			errormsg = '<?php echo $error['admin_usernamenull'];?>';
@@ -25,8 +32,7 @@ $(document).ready(function(){
 			$("#admin_email").html('<?php echo $error['admin_emailformat'];?>');
 			errormsg += '<?php echo $error['admin_emailformat'];?>';
 		}
-		if(admin_id){
-		
+		if(admin_id==0){
 			if(password.length<1){
 				$("#admin_password").html('<?php echo $error['admin_passwordnull'];?>');
 				errormsg += '<?php echo $error['admin_passwordnull'];?>';
@@ -58,9 +64,11 @@ $(document).ready(function(){
 					email:email,
 					password:password,
 					role:role,
-					admin_id:admin_id
+					admin_id:admin_id,
+					page:page
 				},
 				success:function(data){
+					console.log(data);
 					if(data.flag){
 						location.href=data.href;
 						//console.log(data);

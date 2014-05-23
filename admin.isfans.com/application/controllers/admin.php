@@ -15,7 +15,7 @@ class Admin extends Admin_Controller{
 		$keyword = $this->input->post("keyword");
 		$word['keyword'] = $keyword;
 		$total_rows = $this->admin_mdl->get_admin_num($word);
-		$offset = $this->input->get('page', TRUE) ? intval($this->input->get('page', TRUE)) : 1;
+		$data['page'] = $offset = $this->input->get('page', TRUE) ? intval($this->input->get('page', TRUE)) : 1;
 		$offset = $offset<1?1:$offset;
 		$offset = (int) ( $offset - 1) * $page_num;
 		//加载分页
@@ -32,6 +32,7 @@ class Admin extends Admin_Controller{
 	//管理修改
 	function edit(){
 		$id = $data['id'] = $this->uri->segment(3,0);
+		$data['page'] = $this->uri->segment(4,0);
 		$data['roleArr'] = $this->admin_mdl->get_role_arr();
 		if($id){
 			//admin info
@@ -58,12 +59,12 @@ class Admin extends Admin_Controller{
 		$email = $this->input->post('email');
 		$password = $this->input->post('password');
 		$role = $this->input->post('role');
+		$page = $this->input->post('page');
 		$data = array(
 				'username'=>$username,
 				'email'=>$email,
 				'role'=>$role
 		);
-		
 		if($id){
 			//update
 			$admininfo = $this->admin_mdl->get_admin_by_id($id);
@@ -73,30 +74,35 @@ class Admin extends Admin_Controller{
 				}
 				if($this->admin_mdl->update('administrator',$data,array('id'=>$id))){
 					$this->admin_mdl->get_admin_by_id($id,TRUE);
-					$this->_message("管理员更新成功！", '', TRUE);
+					//$this->_message("管理员更新成功！", '', TRUE);
+					$array = array('flag'=>true,'href'=>base_url('admin/index?page='.$page));
 				}else{
-					$this->_message("管理员更新失败！", '', TRUE);
+					//$this->_message("管理员更新失败！", '', TRUE);
+					$array = array('flag'=>false,'msg'=>'管理员更新失败！');
 				}
 			}else{
 				//not exist
-				$this->_message("管理员不存在！", '', TRUE);
+				//$this->_message("管理员不存在！", '', TRUE);
+				$array = array('flag'=>false,'msg'=>'管理员不存在！');
 			}
 		}else{
 			//add
 			$data['password'] = $this->auth_mdl->dogwin_encrypt_password($password);
 			if($id = $this->admin_mdl->insert('administrator',$data)){
 				$this->admin_mdl->get_admin_by_id($id,TRUE);
-				$this->_message("管理员添加成功！", '', TRUE);
+				//$this->_message("管理员添加成功！", '', TRUE);
+				$array = array('flag'=>true,'href'=>base_url('admin/index?page='.$page));
 			}else{
-				$this->_message("管理员添加失败！", '', TRUE);
+				//$this->_message("管理员添加失败！", '', TRUE);
+				$array = array('flag'=>false,'msg'=>'管理员添加失败！');
 			}
 		}
+		echo json_encode($array);
 	}
 	//checkusername
 	function checkusername(){
 		$username = $this->input->post('username');
 		$id = $this->input->post('admin_id');
-		
 		if($this->admin_mdl->get_admin_by_name($username,$id)){
 			$array = array('flag'=>TRUE,'msg'=>'很抱歉用户已经存在！');
 		}else{
@@ -104,4 +110,12 @@ class Admin extends Admin_Controller{
 		}
 		echo json_encode($array);
 	}
+	/**
+	 * role
+	 */
+	function role(){
+		$data = array();
+		$this->_template('admin/role/index',$data);
+	}
+	//end role
 }

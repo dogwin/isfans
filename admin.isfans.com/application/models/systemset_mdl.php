@@ -107,17 +107,18 @@ class Systemset_mdl extends CI_Model{
 	 */
 	//insert
 	function insert($tb,$data){
-		$tb = $this->db->dbprefix($tb);
-		return $this->wdb->insert_id($tb,$data);
+		$tb = $this->rdb->dbprefix($tb);
+		$this->wdb->insert($tb,$data);
+		return $this->wdb->insert_id();
 	}
 	//update
 	function update($tb,$data,$wh){
-		$tb = $this->db->dbprefix($tb);
+		$tb = $this->rdb->dbprefix($tb);
 		return $this->wdb->update($tb,$data,$wh);
 	}
 	//delete
 	function delete($tb,$wh){
-		$tb = $this->db->dbprefix($tb);
+		$tb = $this->rdb->dbprefix($tb);
 		return $this->wdb->delete($tb,$wh);
 	}	
 }
