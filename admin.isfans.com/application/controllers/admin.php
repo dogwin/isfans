@@ -114,8 +114,40 @@ class Admin extends Admin_Controller{
 	 * role
 	 */
 	function role(){
-		$data = array();
+		$page_num = $this->settings->item('backend_page_count');
+		$keyword = $this->input->post("keyword");
+		$word['keyword'] = $keyword;
+		$total_rows = $this->admin_mdl->get_role_num($word);
+		$data['page'] = $offset = $this->input->get('page', TRUE) ? intval($this->input->get('page', TRUE)) : 1;
+		$offset = $offset<1?1:$offset;
+		$offset = (int) ( $offset - 1) * $page_num;
+		//加载分页
+		$this->load->library('pagination');
+		$config['base_url'] = backend_url('systemset/menus') . '?';
+		$config['per_page'] = $page_num;
+		$config['total_rows'] = $total_rows;
+		$this->pagination->initialize($config);
+		$data['pagination'] = $this->pagination->create_links();
+		$data['list'] = $this->admin_mdl->get_roles( $page_num, $offset,$word);
+		$data['word'] = $word;
 		$this->_template('admin/role/index',$data);
+	}
+	//role edit
+	function role_edit(){
+		//role id 
+		$data = $this->admin_mdl->get_form_data();
+		$data['id'] = $id = $this->uri->segment(4,0);
+		$data['page'] = $this->uri->segment(5,0);
+		
+		if($id){
+			$data['role'] = $roleinfo = $this->admin_mdl->get_role_by_id($id);
+			$data['name'] = $roleinfo->name;
+			$data['rightslist'] = $roleinfo->rights;
+		}else{
+			$data['name'] = "";
+			$data['rightslist'] = ''; 
+		}
+		$this->_template('admin/role/edit',$data);
 	}
 	//end role
 }

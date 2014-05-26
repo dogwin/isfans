@@ -42,5 +42,6 @@ $route['default_controller'] = "author/login";
 $route['404_override'] = '';
 
 $route['systemset/menus/(:any)'] = "systemset/menus_$1";
+$route['admin/role/(:any)'] = "admin/role_$1";
 /* End of file routes.php */
 /* Location: ./application/config/routes.php */

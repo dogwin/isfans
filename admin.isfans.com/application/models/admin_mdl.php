@@ -126,6 +126,69 @@ class Admin_mdl extends CI_Model{
 		return FALSE;
 	}
 	//update 
+	/**
+	 * role list
+	 */
+	public function get_role_num(){
+		
+		return $this->rdb->count_all_results($this->db->dbprefix('roles'));
+	}
+	
+	public function get_roles($limit = 0, $offset = 0){
+		$table = $this->rdb->dbprefix('roles');
+		if ($limit)
+		{
+			$this->rdb->limit($limit);
+		}
+		if ($offset)
+		{
+			$this->rdb->offset($offset);
+		}
+		return $this->rdb->from($table)
+		->get()
+		->result();
+	}
+	/**
+	 * 获取表单数据
+	 *
+	 * @access  public
+	 * @return  array
+	 */
+	public function get_form_data()
+	{	
+		$table = $this->rdb->dbprefix('rights');
+		$sql = "SELECT right_id,right_name FROM ".$table;
+		$query = $this->db->query($sql);
+		$roles = $query->result();
+		$data['rights'] = $this->_re_parse_array($roles, 'right_id', 'right_name');
+	
+		return $data;
+	}
+	
+	// ------------------------------------------------------------------------
+	/**
+	 * 格式化数组成ASSOC方式
+	 *
+	 * @access  private
+	 * @param   array
+	 * @param   string
+	 * @param   string
+	 * @return  array
+	 */
+	private function _re_parse_array($array, $key, $value)
+	{
+		$data = array();
+		foreach ($array as $v)
+		{
+			$data[$v->$key] = $v->$value;
+		}
+		return $data;
+	}
+	
+	// ------------------------------------------------------------------------
+	
+	//-----------------end role list--------------//
+	
 	
 	/**
 	 * base function

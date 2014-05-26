@@ -3,6 +3,11 @@ $(document).ready(function(){
 	$("#loginbt").click(function(){
 		login();
 	});
+	$("body").keydown(function() {
+		if (event.keyCode == "13") {
+			login();
+		}
+	});
 });
 function login(){
 	var username = $("#username").val();
