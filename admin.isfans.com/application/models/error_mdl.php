@@ -48,7 +48,11 @@ class Error_mdl extends CI_Model{
 			'admin_emailformat'=>'请填写正确的Email!',
 			'admin_passwordnull'=>'请填写密码！',
 			'admin_repassword'=>'两次密码不一致！',
-			'admin_role'=>'请选择角色！'
+			'admin_role'=>'请选择角色！',
+			'role_namenull' => '请填写角色名',
+			'right_namenull' => '请填写权限名',
+			'right_classnull' =>'请填写控制器',
+			'right_method' =>'请填写页面或操作'
 		);
 		return $array;
 	}

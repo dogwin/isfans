@@ -3,7 +3,7 @@ $(document).ready(function(){
 	$("#loginbt").click(function(){
 		login();
 	});
-	$("body").keydown(function() {
+	$("body").keydown(function(event) {
 		if (event.keyCode == "13") {
 			login();
 		}

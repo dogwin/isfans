@@ -22,12 +22,12 @@ if (!defined('BASEPATH'))
 					</div>
 					<div class="tools"></div>
 				</div>
-				<div class="portlet-body form">
-	            	<?php echo form_open('role/add', array('class' => 'form-horizontal', 'name' => 'basic_validate', 'id' => 'basic_validate')); ?>
+				<div class="portlet-body form form-horizontal">
+	            	
 	              	<div class="control-group">
 		                <label class="control-label">角色名称</label>
 		                <div class="controls">
-		                  	<?php $this -> form -> show('name', 'input', $name); ?><label>*3-20位角色标识</label><?php echo form_error('name'); ?>
+		                  	<?php $this -> form -> show('name', 'input','',$name); ?><label id="E_role_name"></label>
 		                </div>
 	              	</div>
 	              	<div class="control-group">
@@ -39,19 +39,19 @@ if (!defined('BASEPATH'))
 							}else{
 								$rightslist = array();
 							}
-							 
-							 
 							 foreach($rights as $key=>$v): ?>
-	                        <label class="attr"><input type="checkbox" <?php echo in_array($key, $rightslist) ? 'checked="checked"' : ''; ?> value="<?php echo $key; ?>" name="right[]"><?php echo $v; ?></label>
+	                        <label class="attr"><input type="checkbox" <?php echo in_array($key, $rightslist) ? 'checked="checked"' : ''; ?> value="<?php echo $key; ?>" name="rights"><?php echo $v; ?></label>
 							<?php endforeach; ?>
 		                </div>
 	              	</div>
+	              	<input type='hidden' value='<?php echo $id;?>' id='role_id'>
+	              	<input type='hidden' value='<?php echo $page;?>' id='page'>
 	              	<div class="form-actions">
-	                	<input type="submit" value="保存" class="btn blue">
+	                	<input type="submit" value="保存" id='role_save' class="btn blue">
 	              	</div>
-	            	</form>
           		</div>
         	</div>
       	</div>
     </div>
 </div>
+<script src="<?php echo base_url();?>isfansjs/admin" type="text/javascript" language="php"></script>

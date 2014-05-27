@@ -138,7 +138,6 @@ class Admin extends Admin_Controller{
 		$data = $this->admin_mdl->get_form_data();
 		$data['id'] = $id = $this->uri->segment(4,0);
 		$data['page'] = $this->uri->segment(5,0);
-		
 		if($id){
 			$data['role'] = $roleinfo = $this->admin_mdl->get_role_by_id($id);
 			$data['name'] = $roleinfo->name;
@@ -149,5 +148,127 @@ class Admin extends Admin_Controller{
 		}
 		$this->_template('admin/role/edit',$data);
 	}
+	//role edit post
+	public function role_editpost(){
+		$name = $this->input->post('name');
+		$rights = implode(',',$this->input->post('rights'));
+		$id = $this->input->post('id');
+		$page = $this->input->post('page');
+		$data = array('name'=>$name,'rights'=>$rights);
+		if($id){
+			//update
+			if($this->admin_mdl->update('roles',$data,array('id'=>$id))){
+				$this->admin_mdl->get_role_by_id($id,TRUE);
+				$array = array('flag'=>true,'href'=>base_url('admin/role?page='.$page));
+			}else{
+				$array = array('flag'=>false,'msg'=>'角色更新失败');
+			}
+		}else{
+			//insert
+			if($role_id = $this->admin_mdl->insert('roles',$data)){
+				$this->admin_mdl->get_role_by_id($id,TRUE);
+				$array = array('flag'=>true,'href'=>base_url('admin/role?page='.$page));
+			}else{
+				$array = array('flag'=>false,'msg'=>'角色添加失败');
+			}
+		}
+		echo json_encode($array);
+	}
+	//role delete
+	function role_del(){
+		$id = $this->uri->segment(3,0);
+		$roleinfo = $this->admin_mdl->get_role_by_id($id);
+		if($roleinfo){
+			if($this->admin_mdl->delete('roles',array('id'=>$id))){
+				$this->_message("角色删除成功！", '', TRUE);
+			}else{
+				$this->_message("角色删除失败！", '', TRUE);
+			}
+		}else{
+			//not exist
+			$this->_message("角色不存在！", '', TRUE);
+		}
+	}
 	//end role
+	/**
+	 * 权限管理
+	 */
+	public function rights(){
+		$page_num = $this->settings->item('backend_page_count');
+		$keyword = $this->input->post("keyword");
+		$word['keyword'] = $keyword;
+		$total_rows = $this->admin_mdl->get_right_num($word);
+		$data['page'] = $offset = $this->input->get('page', TRUE) ? intval($this->input->get('page', TRUE)) : 1;
+		$offset = $offset<1?1:$offset;
+		$offset = (int) ( $offset - 1) * $page_num;
+		//加载分页
+		$this->load->library('pagination');
+		$config['base_url'] = backend_url('admin/rights') . '?';
+		$config['per_page'] = $page_num;
+		$config['total_rows'] = $total_rows;
+		$this->pagination->initialize($config);
+		$data['pagination'] = $this->pagination->create_links();
+		$data['list'] = $this->admin_mdl->get_rights( $page_num, $offset,$word);
+		$data['word'] = $word;
+		
+		$this->_template('admin/rights/index',$data);
+	}
+	//edit rights
+	function rights_edit(){
+		$data['id'] = $id = $this->uri->segment(4,0);
+		$data['page'] = $this->uri->segment(5,0);
+		if($id){
+			//update
+			$rightsinfo = $this->admin_mdl->get_rights_by_id($id);
+			$data['right_name'] = $rightsinfo->right_name;
+			$data['right_class'] = $rightsinfo->right_class;
+			$data['right_method'] = $rightsinfo->right_method;
+		}else{
+			//add
+			$data['right_name'] = '';
+			$data['right_class'] = '';
+			$data['right_method'] = '';
+		}
+		$this->_template('admin/rights/edit',$data);
+	}
+	function rights_editpost(){
+		$id = $this->input->post('id');
+		$page = $this->input->post('page');
+		$right_name = $this->input->post('right_name');
+		$right_class = $this->input->post('right_class');
+		$right_method = $this->input->post('right_method');
+		$data = array('right_name'=>$right_name,'right_class'=>$right_class,'right_method'=>$right_method);
+		if($id){
+			//update
+			if($this->admin_mdl->update('rights',$data,array('right_id'=>id))){
+				$this->admin_mdl->get_rights_by_id($id,true);
+				$array = array('flag'=>true,href=>base_url('admin/rights?page='.$page));
+			}else{
+				$array = array('flag'=>false,'msg'=>'权限更新失败');
+			}
+		}else{
+			//add
+			if($id = $this->admin_mdl->insert('rights',$data)){
+				$this->admin_mdl->get_rights_by_id($id,true);
+				$array = array('flag'=>true,href=>base_url('admin/rights?page='.$page));
+			}else{
+				$array = array('flag'=>false,'msg'=>'权限添加失败');
+			}
+		}
+		echo json_encode($array);
+	}
+	function rights_del(){
+		$id = $this->uri->segment(3,0);
+		if($rightsinfo = $this->admin_mdl->get_rights_by_id($id)){
+			if($this->admin_mdl->delete('rights',array('right_id'=>$id))){
+				$this->_message("权限删除成功！", '', TRUE);
+			}else{
+				$this->_message("权限删除失败！", '', TRUE);
+			}
+		}else{
+			$this->_message("权限不存在！", '', TRUE);
+		}
+	}
+	//end rights
+	
 }

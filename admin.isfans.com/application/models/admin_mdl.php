@@ -106,7 +106,7 @@ class Admin_mdl extends CI_Model{
 	}
 	//get role by id 
 	function get_role_by_id($id,$force_refresh=FALSE){
-		$table = 
+		$table = $this->rdb->dbprefix('roles');
 		$id	= intval($id);
 		if( 0 == $id ) {
 			return FALSE;
@@ -116,7 +116,7 @@ class Admin_mdl extends CI_Model{
 		if( FALSE!==$data && TRUE!=$force_refresh ) {
 			return $data;
 		}
-		$sql = 'SELECT * FROM isfans_roles WHERE id="'.$id.'" LIMIT 1';
+		$sql = 'SELECT * FROM '.$table.' WHERE id="'.$id.'" LIMIT 1';
 		$query	= $this->rdb->query($sql, FALSE);
 		if($obj = $query->row()) {
 			$this->cache->save($cachekey,$obj,3000);
@@ -188,6 +188,59 @@ class Admin_mdl extends CI_Model{
 	// ------------------------------------------------------------------------
 	
 	//-----------------end role list--------------//
+	
+	/**
+	 * rights
+	 */
+	public function get_right_num($word=array()){
+		if(!empty($word)){
+			if(isset($word['keyword'])&&!empty($word['keyword'])){
+				$this->rdb->like('right_name',$word['keyword']);
+			}
+		}
+		return $this->rdb->count_all_results($this->db->dbprefix('rights'));
+	}
+	
+	public function get_rights($limit = 0, $offset = 0, $word = array()){
+		$table = $this->rdb->dbprefix('rights');
+		if ($limit)
+		{
+			$this->rdb->limit($limit);
+		}
+		if ($offset)
+		{
+			$this->rdb->offset($offset);
+		}
+		if(!empty($word)){
+			if(isset($word['keyword'])&&!empty($word['keyword'])){
+				$this->rdb->like('right_name',$word['keyword']);
+			}
+		}
+		return $this->rdb->from($table)
+		->get()
+		->result();
+	}
+	function get_rights_by_id($id,$force_refresh=FALSE){
+		$table = $this->rdb->dbprefix('rights');
+		$id	= intval($id);
+		if( 0 == $id ) {
+			return FALSE;
+		}
+		$cachekey	= 'get_rights_by_id_'.$id;
+		$data	= $this->cache->get($cachekey);
+		if( FALSE!==$data && TRUE!=$force_refresh ) {
+			return $data;
+		}
+		$sql = 'SELECT * FROM '.$table.' WHERE right_id="'.$id.'" LIMIT 1';
+		$query	= $this->rdb->query($sql, FALSE);
+		if($obj = $query->row()) {
+			$this->cache->save($cachekey,$obj,3000);
+			return $obj;
+		}
+		$this->cache->delete($cachekey);
+		return FALSE;
+	}
+	//-----------------end rights--------------//
 	
 	
 	/**

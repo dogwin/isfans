@@ -120,6 +120,14 @@ $setting['menus']=array (
             'menu_name' => '管理员管理',
             'menu_parent' => '12',
           ),
+          2 => 
+          array (
+            'menu_id' => '44',
+            'class_name' => 'admin',
+            'method_name' => 'rights',
+            'menu_name' => '权限管理',
+            'menu_parent' => '12',
+          ),
         ),
       ),
       3 => 
