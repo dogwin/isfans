@@ -83,10 +83,12 @@ class Acl
 			$this->ci->settings->load('acl/role_' . $this->ci->_admin->role . '.php');//加载权限数据
 			$this->top_menus = & setting('menus');
 			$this->rights = & setting('current_role');
+			
 		}
 		$this->top_menus = & setting('menus');
 		$this->rights = & setting('current_role');
 		$this->_filter_menus();
+		
 	}
 	
 	
@@ -162,7 +164,7 @@ class Acl
 			case 'module' : 
 						$this->_filter_module_menus($class_name, $method_name);
 						break;
-			case 'system' :
+			case 'systemset' :
 			case 'setting':
 			case 'model'  :
 			case 'category' :
@@ -354,7 +356,7 @@ class Acl
 		$method_name = $this->ci->uri->rsegment(2);
 		$this->_filter_normal_menus($class_name, $method_name, $default_uri, $this->_current_menu, $folder);
 	}
-
+	
 	// ------------------------------------------------------------------------
 	
 }

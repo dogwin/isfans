@@ -98,8 +98,8 @@ $setting['menus']=array (
       2 => 
       array (
         'menu_id' => '12',
-        'class_name' => 'role',
-        'method_name' => 'view',
+        'class_name' => 'admin',
+        'method_name' => 'rights',
         'menu_name' => '权限管理',
         'menu_parent' => '1',
         'sub_menus' => 

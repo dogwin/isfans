@@ -54,6 +54,7 @@ class Admin_mdl extends CI_Model{
 		$query	= $this->rdb->query($sql, FALSE);
 		if($obj = $query->row()) {
 			$this->cache->save($cachekey,$obj,3000);
+			@$this->cache->delete('dogwin_check_session_'.$obj->username);
 			return $obj;
 		}
 		$this->cache->delete($cachekey);
@@ -147,6 +148,18 @@ class Admin_mdl extends CI_Model{
 		return $this->rdb->from($table)
 		->get()
 		->result();
+	}
+	public function get_rightsName($rightIDS){
+		$rightArr = explode(',', $rightIDS);
+		$rightnameArr = array();
+		if(count($rightArr)){
+			foreach ($rightArr as $v){
+				$rightinfo = $this->get_rights_by_id($v);
+				$rightnameArr[] = $rightinfo->right_name;
+			}
+			return implode(',',$rightnameArr);
+		}
+		return '';
 	}
 	/**
 	 * 获取表单数据

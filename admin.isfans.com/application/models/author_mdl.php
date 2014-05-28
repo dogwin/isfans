@@ -34,4 +34,7 @@ class Author_mdl extends CI_Model{
 		$data	= $this->cache->get($cachekey);
 		return $data;
 	}
+	function logout(){
+		return $this->session->sess_destroy();
+	}
 }

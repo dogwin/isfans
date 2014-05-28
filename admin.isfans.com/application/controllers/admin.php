@@ -67,13 +67,14 @@ class Admin extends Admin_Controller{
 		);
 		if($id){
 			//update
-			$admininfo = $this->admin_mdl->get_admin_by_id($id);
+			$admininfo = $this->admin_mdl->get_admin_by_id($id,TRUE);
 			if($admininfo){	
 				if($password){
 					$data['password'] = $this->auth_mdl->dogwin_encrypt_password($password);
 				}
 				if($this->admin_mdl->update('administrator',$data,array('id'=>$id))){
-					$this->admin_mdl->get_admin_by_id($id,TRUE);
+					$newadminfo = $this->admin_mdl->get_admin_by_id($id,TRUE);
+					
 					//$this->_message("管理员更新成功！", '', TRUE);
 					$array = array('flag'=>true,'href'=>base_url('admin/index?page='.$page));
 				}else{
@@ -123,7 +124,7 @@ class Admin extends Admin_Controller{
 		$offset = (int) ( $offset - 1) * $page_num;
 		//加载分页
 		$this->load->library('pagination');
-		$config['base_url'] = backend_url('systemset/menus') . '?';
+		$config['base_url'] = backend_url('admin/role') . '?';
 		$config['per_page'] = $page_num;
 		$config['total_rows'] = $total_rows;
 		$this->pagination->initialize($config);
@@ -240,9 +241,9 @@ class Admin extends Admin_Controller{
 		$data = array('right_name'=>$right_name,'right_class'=>$right_class,'right_method'=>$right_method);
 		if($id){
 			//update
-			if($this->admin_mdl->update('rights',$data,array('right_id'=>id))){
+			if($this->admin_mdl->update('rights',$data,array('right_id'=>$id))){
 				$this->admin_mdl->get_rights_by_id($id,true);
-				$array = array('flag'=>true,href=>base_url('admin/rights?page='.$page));
+				$array = array('flag'=>true,'href'=>base_url('admin/rights?page='.$page));
 			}else{
 				$array = array('flag'=>false,'msg'=>'权限更新失败');
 			}

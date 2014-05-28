@@ -33,4 +33,9 @@ class Author extends CI_Controller{
 		$myt = $_POST['myt'];
 		echo $myt;
 	}
+	function logout(){
+		$this->author_mdl->logout();
+		header('location:'.base_url('author/login'));
+		exit();
+	}
 }

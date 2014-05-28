@@ -45,7 +45,7 @@ if (!defined('BASEPATH'))
                 			<tr class="odd gradeX">
                 				<td></td>
                 				<td><?php echo $v->name;?></td>
-                  				<td><?php echo $v ->rights;?></td>
+                  				<td><?php echo $this->admin_mdl->get_rightsName($v ->rights);?></td>
                   				<td>
 				  					<a class="" href="<?php echo base_url('admin/role/edit/' . $v -> id.'/'.$page); ?>"><span class="label label-success">修改</span></a>
                     				<a href='#myAlert<?= $v->id?>' class="tip-top" data-toggle="modal" data-original-title="删除"><span class="label label-success">删除</span></a>
