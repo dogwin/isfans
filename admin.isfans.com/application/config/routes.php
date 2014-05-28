@@ -38,7 +38,7 @@
 |
 */
 
-$route['default_controller'] = "author/login";
+$route['default_controller'] = "systemset/index";
 $route['404_override'] = '';
 
 $route['systemset/menus/(:any)'] = "systemset/menus_$1";

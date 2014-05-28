@@ -5,10 +5,10 @@ $setting['current_role']=array (
   'rights' => 
   array (
     0 => 'systemset@setting',
-    1 => 'systemset@backend',
-    2 => 'systemset@password',
-    3 => 'systemset@menus',
-    4 => 'admin@role',
+    1 => 'systemset@cache',
+    2 => 'systemset@menus',
+    3 => 'admin@role',
+    4 => 'admin@index',
   ),
   'plugins' => '',
 );

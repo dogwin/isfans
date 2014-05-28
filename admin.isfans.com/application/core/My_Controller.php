@@ -46,8 +46,9 @@ abstract class Admin_Controller extends CI_Controller
 		$this->_admin = $this->auth_mdl->dogwin_check_session();
 		//print_r($this->_admin);
 		if(!$this->_admin){
+			$redirect =  "//$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
 			//unlogged
-			redirect(base_url('author/login'));
+			redirect(base_url('author/login?redurl='.$redirect));
 			exit();
 		}
 	}

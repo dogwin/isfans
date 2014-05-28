@@ -34,7 +34,7 @@ if (!defined('BASEPATH'))
 		<ul class="breadcrumb">
 			<li>
 				<i class="icon-home"></i>
-				<a href="<?= base_url() ?>">后台首页</a> 
+				<a href="<?= base_url('systemset/index') ?>">后台首页</a> 
 				<i class="icon-angle-right"></i>
 			</li>
 			<?php if(isset($nav)&&!empty($nav)){?>

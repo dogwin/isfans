@@ -12,6 +12,7 @@ $(document).ready(function(){
 function login(){
 	var username = $("#username").val();
 	var password = $("#password").val();
+	var redurl = $("#redurl").val();
 	var errormsg = '';
 	if(username.length<1){
 		errormsg = '<?php echo $error['UN_NULL']?>';
@@ -29,7 +30,8 @@ function login(){
 			dataType:'json',
 			data:{
 				username:username,
-				password:password
+				password:password,
+				redurl:redurl
 			},
 			/*beforeSend:function(){
 				console.log('posting.....');

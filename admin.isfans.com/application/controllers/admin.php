@@ -8,6 +8,7 @@
 class Admin extends Admin_Controller{
 	function __construct(){
 		parent::__construct();
+		$this->_check_permit();
 		$this->load->model(array('auth_mdl','systemset_mdl','admin_mdl'));
 	}
 	function index(){

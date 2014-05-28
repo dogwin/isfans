@@ -17,9 +17,9 @@ class Post extends CI_Controller{
 	function login(){
 		$username = $this->input->post('username');
 		$password = $this->input->post('password');
-		
+		$redurl = $this->input->post('redurl')?$this->input->post('redurl'):base_url('systemset/index');
 		if($this->auth_mdl->user_login($username,$password)){
-			$array = array('flag'=>true,'redirect'=>base_url('systemset/index'));
+			$array = array('flag'=>true,'redirect'=>$redurl);
 		}else{
 			$array = array('flag'=>false);
 		}

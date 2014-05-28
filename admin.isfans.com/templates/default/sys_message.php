@@ -30,7 +30,7 @@ if (!defined('BASEPATH'))
                 </script>
               	<p><a href="<?php echo $goto; ?>" style="text-decoration:underline"><?php echo "页面正在自动转向，你也可以点此直接跳转！"; ?></a></p>
               	<?php endif; ?>
-              	<p><a class="btn btn-warning btn-big"  href="<?= base_url() ?>">后台首页</a></p> 
+              	<p><a class="btn btn-warning btn-big"  href="<?= base_url('systemset/index') ?>">后台首页</a></p> 
 			</div>
 		</div>
 	</div>

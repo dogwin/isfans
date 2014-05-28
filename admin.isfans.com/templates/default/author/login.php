@@ -35,6 +35,7 @@ if (!defined('BASEPATH'))
                         </div>
                     </div>
                 </div>
+                <input type='hidden' id='redurl' value='<?php echo isset($_GET['redurl'])?$_GET['redurl']:'';?>'>
                 <div class="form-actions">
                     <span class="pull-right"><input type="button" class="btn btn-success" id="loginbt" value='登录'/></span>
                 </div>
