@@ -2,7 +2,7 @@
 if (!defined('BASEPATH'))
 	exit('No direct script access allowed');
 ?>
-<link href="<?= base_url() ?>templates/default/media/css/error.css" rel="stylesheet" type="text/css"/>
+<link href="<?= base_url() ?>asset/default/media/css/error.css" rel="stylesheet" type="text/css"/>
 <div class="container-fluid">
 	<?php
 	$data_top = array();

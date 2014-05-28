@@ -252,7 +252,7 @@ class Admin extends Admin_Controller{
 			//add
 			if($id = $this->admin_mdl->insert('rights',$data)){
 				$this->admin_mdl->get_rights_by_id($id,true);
-				$array = array('flag'=>true,href=>base_url('admin/rights?page='.$page));
+				$array = array('flag'=>true,'href'=>base_url('admin/rights?page='.$page));
 			}else{
 				$array = array('flag'=>false,'msg'=>'权限添加失败');
 			}

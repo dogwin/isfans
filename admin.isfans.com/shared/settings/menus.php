@@ -222,6 +222,81 @@ $setting['menus']=array (
         array (
         ),
       ),
+      7 => 
+      array (
+        'menu_id' => '45',
+        'class_name' => 'model',
+        'method_name' => 'index',
+        'menu_name' => '模块管理',
+        'menu_parent' => '1',
+        'sub_menus' => 
+        array (
+          0 => 
+          array (
+            'menu_id' => '46',
+            'class_name' => 'buddha',
+            'method_name' => 'index',
+            'menu_name' => '诸佛菩萨',
+            'menu_parent' => '45',
+          ),
+          1 => 
+          array (
+            'menu_id' => '47',
+            'class_name' => 'master',
+            'method_name' => 'index',
+            'menu_name' => '法师大德',
+            'menu_parent' => '45',
+          ),
+          2 => 
+          array (
+            'menu_id' => '48',
+            'class_name' => 'classics',
+            'method_name' => 'index',
+            'menu_name' => '佛教典籍',
+            'menu_parent' => '45',
+          ),
+          3 => 
+          array (
+            'menu_id' => '49',
+            'class_name' => 'mantras',
+            'method_name' => 'index',
+            'menu_name' => '佛教咒语',
+            'menu_parent' => '45',
+          ),
+          4 => 
+          array (
+            'menu_id' => '50',
+            'class_name' => 'stories',
+            'method_name' => 'index',
+            'menu_name' => '佛教故事',
+            'menu_parent' => '45',
+          ),
+          5 => 
+          array (
+            'menu_id' => '51',
+            'class_name' => 'buddhism',
+            'method_name' => 'index',
+            'menu_name' => '佛教文化',
+            'menu_parent' => '45',
+          ),
+          6 => 
+          array (
+            'menu_id' => '52',
+            'class_name' => 'temple',
+            'method_name' => 'index',
+            'menu_name' => '佛教寺院',
+            'menu_parent' => '45',
+          ),
+          7 => 
+          array (
+            'menu_id' => '53',
+            'class_name' => 'help',
+            'method_name' => 'index',
+            'menu_name' => '法宝结缘',
+            'menu_parent' => '45',
+          ),
+        ),
+      ),
     ),
   ),
 );
