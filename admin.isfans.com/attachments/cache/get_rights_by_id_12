@@ -1,1 +1,1 @@
-a:3:{s:4:"time";i:1401263856;s:3:"ttl";i:3000;s:4:"data";O:8:"stdClass":5:{s:8:"right_id";s:2:"12";s:10:"right_name";s:15:"删除管理员";s:11:"right_class";s:4:"user";s:12:"right_method";s:3:"del";s:12:"right_detail";N;}}
+a:3:{s:4:"time";i:1401328064;s:3:"ttl";i:3000;s:4:"data";O:8:"stdClass":5:{s:8:"right_id";s:2:"12";s:10:"right_name";s:15:"删除管理员";s:11:"right_class";s:4:"user";s:12:"right_method";s:3:"del";s:12:"right_detail";N;}}

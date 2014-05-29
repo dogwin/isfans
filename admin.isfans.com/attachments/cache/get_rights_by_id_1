@@ -1,1 +1,1 @@
-a:3:{s:4:"time";i:1401263856;s:3:"ttl";i:3000;s:4:"data";O:8:"stdClass":5:{s:8:"right_id";s:1:"1";s:10:"right_name";s:12:"系统设置";s:11:"right_class";s:9:"systemset";s:12:"right_method";s:7:"setting";s:12:"right_detail";N;}}
+a:3:{s:4:"time";i:1401328064;s:3:"ttl";i:3000;s:4:"data";O:8:"stdClass":5:{s:8:"right_id";s:1:"1";s:10:"right_name";s:12:"系统设置";s:11:"right_class";s:9:"systemset";s:12:"right_method";s:7:"setting";s:12:"right_detail";N;}}
